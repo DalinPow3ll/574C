@@ -34,8 +34,8 @@
 void moveArm(int direction){
 	motorSet(4, direction); // set arm left 1
 	motorSet(5, direction); // set arm left 2
-	motorSet(6, direction); // set arm left 2
-	motorSet(7, direction); // set arm left 2
+	motorSet(6, direction); // set arm left 3
+	motorSet(7, direction); // set arm left 4
 }
 
 
