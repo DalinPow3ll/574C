@@ -30,6 +30,7 @@
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
 
+
 //function for the lift arm
 void liftSet(int direction){
 	motorSet(4, direction); // set arm left 1
@@ -38,6 +39,16 @@ void liftSet(int direction){
 	motorSet(7, direction); // set arm left 4
 }
 
+//claw code
+void clawSet(int direction){
+	motorSet(8, direction); // claw motor 1
+	motorSet(9, direction); // claw motor 2
+}
+
+
+void tipSet(int direction){
+	motorSet(1, direction); // main tip motor
+}
 
 
 void operatorControl() {
@@ -63,6 +74,29 @@ void operatorControl() {
 		      liftSet(0); // no buttons are pressed, stop the lift
 		    }
 
+
+				//claw code
+				if(joystickGetDigital(1, 5, JOY_UP)) {
+		      clawSet(127); // pressing up, so claw should open
+		    }
+		    else if(joystickGetDigital(1, 5, JOY_DOWN)) {
+		      clawSet(-127); // pressing down, so claw should close
+		    }
+		    else {
+		      clawSet(0); // no buttons are pressed, stop the claw
+		    }
+
+
+				//tip-bar code
+				if(joystickGetDigital(1, 7, JOY_UP)) {
+		      tipSet(127); // pressing up, so tip-bar should open
+		    }
+		    else if(joystickGetDigital(1, 7, JOY_DOWN)) {
+		      tipSet(-127); // pressing down, so tip-bar should close
+		    }
+		    else {
+		      tipSet(0); // no buttons are pressed, stop the tip-bar
+		    }
 
         delay(20);
     }
