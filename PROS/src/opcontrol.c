@@ -31,7 +31,7 @@
  */
 
 //function for the lift arm
-void moveArm(int direction){
+void liftSet(int direction){
 	motorSet(4, direction); // set arm left 1
 	motorSet(5, direction); // set arm left 2
 	motorSet(6, direction); // set arm left 3
@@ -44,10 +44,26 @@ void operatorControl() {
 	int power;
   int turn;
     while (1) {
+
+				//drive code
         power = joystickGetAnalog(1, 2); // vertical axis on left joystick
         turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
         motorSet(2, power + turn); // set left wheels
         motorSet(3, power - turn); // set right wheels
+
+
+				//lift code
+				if(joystickGetDigital(1, 6, JOY_UP)) {
+		      liftSet(127); // pressing up, so lift should go up
+		    }
+		    else if(joystickGetDigital(1, 6, JOY_DOWN)) {
+		      liftSet(-127); // pressing down, so lift should go down
+		    }
+		    else {
+		      liftSet(0); // no buttons are pressed, stop the lift
+		    }
+
+
         delay(20);
     }
 }
