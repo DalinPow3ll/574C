@@ -29,7 +29,14 @@
  *
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
-
+void startUp(int on){
+	on = 0;
+	if (on == 0){
+		delay(2500);
+			lcdPrint("Program has Succesfully Complied, and is now running v1.5.05"):
+	}
+	on = 1;
+}
 
 //function for the lift arm
 void liftSet(int direction){
@@ -58,18 +65,18 @@ void operatorControl() {
     while (1) {
 
 				//drive code
-        power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-        turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
+        power = joystickGetAnalog(1, 1); // vertical axis on left joystick
+        turn  = joystickGetAnalog(1, 2); // horizontal axis on left joystick
         motorSet(2, power + turn); // set left wheels
-        motorSet(3, power - turn); // set right wheels
+        motorSet(3, power - turn); // set right
 
 
 				//lift code
 				if(joystickGetDigital(1, 6, JOY_UP)) {
-		      liftSet(127); // pressing up, so lift should go up
+		      liftSet(-127); // pressing up, so lift should go up
 		    }
 		    else if(joystickGetDigital(1, 6, JOY_DOWN)) {
-		      liftSet(-127); // pressing down, so lift should go down
+		      liftSet(127); // pressing down, so lift should go down
 		    }
 		    else {
 		      liftSet(0); // no buttons are pressed, stop the lift
@@ -101,4 +108,5 @@ void operatorControl() {
 
         delay(20);
     }
+
 }
