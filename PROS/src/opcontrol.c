@@ -46,6 +46,7 @@ void clawSet(int direction){
 }
 
 
+//tip-bar code
 void tipSet(int direction){
 	motorSet(1, direction); // main tip motor
 }
