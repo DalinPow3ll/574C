@@ -100,7 +100,7 @@ void autonomous() {
   //drop arm
   drive(4); //stop
   //delay 100
-  //turn left
+  //turn left/right
   //delay 200
   //drive forward
   //delay 600
@@ -109,7 +109,7 @@ void autonomous() {
   //delay 400
   //raise arm
   //delay 150
-  //turn left
+  //turn left/right
   //delay 100
   //stop arm
   //delay
