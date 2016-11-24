@@ -33,7 +33,7 @@ void startUp(int on){
 	on = 0;
 	if (on == 0){
 		delay(2500);
-			lcdPrint("Program has Succesfully Complied, and is now running v1.5.05"):
+			//lcdPrint("Program has Succesfully Complied, and is now running v1.5.05"):
 	}
 	on = 1;
 }

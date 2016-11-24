@@ -26,23 +26,77 @@
  * The autonomous task may exit, unlike operatorControl() which should never exit. If it does
  * so, the robot will await a switch to another mode or disable/enable cycle.
  */
+
+ //functions for autonomous
+
+//arm lift
+ void liftSet(int direction){
+ 	motorSet(4, direction); // set arm left 1
+ 	motorSet(5, direction); // set arm left 2
+ 	motorSet(6, direction); // set arm left 3
+ 	motorSet(7, direction); // set arm left 4
+ }
+
+
+ //claw code
+ void clawSet(int direction){
+ 	motorSet(8, direction); // claw motor 1
+ 	motorSet(9, direction); // claw motor 2
+ }
+
+
+ void drive (int direction) {
+   /*directions
+   0 = forward
+   1 = backward
+   2 = left
+   3 = right
+   4 = stop
+   */
+
+   if (direction == 0 || direction == 3) {
+     motorSet(2, 127);
+   }else if (direction == 4){
+     motorSet(2, 0);
+   }else{
+     motorSet(2, -127);
+   }
+
+   if (direction == 0 || direction == 2) {
+     motorSet(3, 127);
+   }else if (direction == 4){
+     motorSet(2, 0);
+   }else{
+     motorSet(2, -127);
+   }
+
+ }
+
 void autonomous() {
 
   //pseudo code
 
-  //bring out tip-bar
-  //drive forward
-  //claw open
-  //lift arm
-  //delay 700
-  //stop claw
-  //delay 500
-  //stop arm
-  //delay 300
-  //stop
-  //delay 100
-  //reverse
-  //delay 150
+  /*
+  motor key
+  1 tip-bar
+  2 & 3 drive
+  4-7 arm
+  8-9 claw
+  */
+
+  motorSet(1, 127); //bring out tip-bar
+  drive(0); //drive forward
+  clawSet(127); //claw open
+  liftSet(-127); //lift arm
+  delay(700); //delay 700
+  clawSet(0); //stop claw
+  delay(500); //delay 500
+  liftSet(0);//stop arm
+  delay(300); //delay 300
+  drive(4); //stop
+  delay(100); //delay 100
+  //drive(1); //reverse
+  delay(150); //delay 150
   //drop arm
   //stop
   //delay 100
