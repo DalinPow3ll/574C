@@ -60,6 +60,25 @@ void tipSet(int direction){
 	motorSet(1, direction); // main tip motor
 }
 
+void clawCode(int clawDirection){
+	//claw code
+	if(joystickGetDigital(1, 5, JOY_UP) && clawDirection != 1) {
+		clawSet(127); // pressing up, so claw should open
+		clawDirection = 1;
+	}
+	else if(joystickGetDigital(1, 5, JOY_DOWN) && clawDirection != 2) {
+		clawSet(-127); // pressing down, so claw should close
+		clawDirection = 2;
+	}
+	else if(clawDirection == 3){
+		// low power mode
+		clawSet(-50);
+	}
+	else if(clawDirection != 0){
+		clawSet(0); // no buttons are pressed, stop the claw
+	}
+}
+
 //main operator control statement
 void operatorControl() {
 	int power;
@@ -91,7 +110,6 @@ void operatorControl() {
 		      liftSet(-30); // no buttons are pressed, hold the lift in place with a little power
 		    }
 
-
 				//if the claw is moving, turn on the clock
 				if(clawDirection != 0){
 					//claw clock reset if it is finished moving
@@ -106,24 +124,7 @@ void operatorControl() {
 						clawClock ++; // increment claw clock
 					}
 				}
-
-				//claw code
-				if(joystickGetDigital(1, 5, JOY_UP) && clawDirection != 1) {
-		      clawSet(127); // pressing up, so claw should open
-					clawDirection = 1;
-		    }
-		    else if(joystickGetDigital(1, 5, JOY_DOWN) && clawDirection != 2) {
-		      clawSet(-127); // pressing down, so claw should close
-					clawDirection = 2;
-		    }
-				else if(clawDirection == 3){
-					// low power mode
-					clawSet(-50);
-				}
-		    else if(clawDirection != 0){
-		      clawSet(0); // no buttons are pressed, stop the claw
-		    }
-
+				clawCode(clawDirection); // moves claw based on state
 
 				//tip-bar code
 				if(joystickGetDigital(1, 7, JOY_UP)) {
