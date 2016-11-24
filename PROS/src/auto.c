@@ -27,4 +27,53 @@
  * so, the robot will await a switch to another mode or disable/enable cycle.
  */
 void autonomous() {
+
+  //pseudo code
+
+  //bring out tip-bar
+  //drive forward
+  //claw open
+  //lift arm
+  //delay 700
+  //stop claw
+  //delay 500
+  //stop arm
+  //delay 300
+  //stop
+  //delay 100
+  //reverse
+  //delay 150
+  //drop arm
+  //stop
+  //delay 100
+  //turn left
+  //delay 200
+  //drive forward
+  //delay 600
+  //stop
+  //claw grab
+  //delay 400
+  //raise arm
+  //delay 150
+  //turn left
+  //delay 100
+  //stop arm
+  //delay
+  //stop
+  //delay 50
+  //reverse
+  //lift arm
+  //delay 300
+  //stop arm
+  //delay 200
+  //stop
+  //open claw
+  //delay 250
+  //close claw
+  //lower arm
+  //delay 200
+  //stop claw
+  //delay 300
+  //stop arm
+
 }
