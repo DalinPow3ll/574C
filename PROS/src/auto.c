@@ -95,10 +95,10 @@ void autonomous() {
   delay(300); //delay 300
   drive(4); //stop
   delay(100); //delay 100
-  //drive(1); //reverse
+  drive(1); //reverse
   delay(150); //delay 150
   //drop arm
-  //stop
+  drive(4); //stop
   //delay 100
   //turn left
   //delay 200
