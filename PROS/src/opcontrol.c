@@ -30,14 +30,6 @@
  *
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
-void startUp(int on){
-	on = 0;
-	if (on == 0){
-		delay(2500);
-			lcdPrint("Program has Succesfully Complied, and is now running v1.5.05");
-	}
-	on = 1;
-}
 
 
 //function for the lift arm

@@ -44,4 +44,6 @@ void initialize() {
   //lcd
   lcdInit(uart1);
   lcdClear(uart1);
+  lcdSetText(uart1, 1, "Initiated");
+  lcdSetText(uart1, 2, "running v1.5.05");
 }
