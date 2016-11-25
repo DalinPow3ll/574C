@@ -37,6 +37,11 @@ void initializeIO() {
  * can be implemented in this task if desired.
  */
 void initialize() {
-  clawEnc = encoderInit(6, 5, false); // initialize encoderxs
+  //encoder
+  clawEnc = encoderInit(6, 5, false); // initialize encoders
   encoderReset(clawEnc); // reset encoder
+
+  //lcd
+  lcdInit(uart1);
+  lcdClear(uart1);
 }
