@@ -11,6 +11,7 @@
  */
 
 #include "main.h"
+#include "claw.h"
 
 /*
  * Runs the user operator control code. This function will be started in its own task with the
@@ -33,7 +34,7 @@ void startUp(int on){
 	on = 0;
 	if (on == 0){
 		delay(2500);
-			//lcdPrint("Program has Succesfully Complied, and is now running v1.5.05"):
+			lcdPrint("Program has Succesfully Complied, and is now running v1.5.05");
 	}
 	on = 1;
 }
@@ -47,36 +48,9 @@ void liftSet(int direction){
 	motorSet(7, direction); // set arm left 4
 }
 
-
-//claw code
-void clawSet(int direction){
-	motorSet(8, direction); // claw motor 1
-	motorSet(9, direction); // claw motor 2
-}
-
-
 //tip-bar code
 void tipSet(int direction){
 	motorSet(1, direction); // main tip motor
-}
-
-void clawCode(int clawDirection){
-	//claw code
-	if(joystickGetDigital(1, 5, JOY_UP) && clawDirection != 1) {
-		clawSet(127); // pressing up, so claw should open
-		clawDirection = 1;
-	}
-	else if(joystickGetDigital(1, 5, JOY_DOWN) && clawDirection != 2) {
-		clawSet(-127); // pressing down, so claw should close
-		clawDirection = 2;
-	}
-	else if(clawDirection == 3){
-		// low power mode
-		clawSet(-50);
-	}
-	else if(clawDirection != 0){
-		clawSet(0); // no buttons are pressed, stop the claw
-	}
 }
 
 //main operator control statement
@@ -84,14 +58,7 @@ void operatorControl() {
 	int power;
   int turn;
 
-
-	//controls direction of claw movement
-	int clawDirection = 0; // 0 = stop, 1 = open, 2 = close, 3 = low power
-	int clawClock = 0; // controls the time of the claw opening and closing
-
     while (1) {
-
-
 				//drive code
         power = joystickGetAnalog(1, 1); // vertical axis on left joystick
         turn  = joystickGetAnalog(1, 2); // horizontal axis on left joystick
@@ -109,22 +76,6 @@ void operatorControl() {
 		    else {
 		      liftSet(-30); // no buttons are pressed, hold the lift in place with a little power
 		    }
-
-				//if the claw is moving, turn on the clock
-				if(clawDirection != 0){
-					//claw clock reset if it is finished moving
-					if (clawClock > 50){
-						clawClock = 0; // reset clock
-						if (clawDirection == 1){
-							clawDirection = 3; // low power mode if claw is going forward
-						}else{
-							clawDirection = 0; // 0 = stop claw
-						}
-					}else{
-						clawClock ++; // increment claw clock
-					}
-				}
-				clawCode(clawDirection); // moves claw based on state
 
 				//tip-bar code
 				if(joystickGetDigital(1, 7, JOY_UP)) {
