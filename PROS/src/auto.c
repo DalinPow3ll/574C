@@ -11,7 +11,7 @@
  */
 
 #include "main.h"
-
+#include "claw.h"
 /*
  * Runs the user autonomous code. This function will be started in its own task with the default
  * priority and stack size whenever the robot is enabled via the Field Management System or the
@@ -36,14 +36,6 @@
  	motorSet(6, direction); // set arm left 3
  	motorSet(7, direction); // set arm left 4
  }
-
-
- //claw code
- void clawSet(int direction){
- 	motorSet(8, direction); // claw motor 1
- 	motorSet(9, direction); // claw motor 2
- }
-
 
  void drive (int direction) {
    /*directions

@@ -41,7 +41,7 @@ void initialize() {
   clawEnc = encoderInit(6, 5, false); // initialize encoders
   encoderReset(clawEnc); // reset encoder
 
-  //lcd
+  //lcd using port uart1
   lcdInit(uart1);
   lcdClear(uart1);
   lcdSetText(uart1, 1, "Initiated");
