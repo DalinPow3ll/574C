@@ -22,6 +22,7 @@ void clawStart(int direction){
 //claw logic
 int clawGetDirection(){
   int direction; //define direciton variable
+  int pot = analogRead(1);
 
   //start joystick if button is pressed
   if(joystickGetDigital(1, 6, JOY_UP)){
@@ -32,15 +33,18 @@ int clawGetDirection(){
 
 
   //stop claw if potentiometer at limit
-  if (analogRead(1) < cOpen) {
+  if (pot < cOpen) {
     direction = 0; //stop claw if too open
-    isMid = false;
-  }else if (analogRead(1) > cclose) {
+  }else if (pot > cclose) {
     direction = 0; //stop claw if too closed
-    isMid = false;
-  }else if (analogRead(1) == cMid && isMid == false) {
+  }else if (pot == cMid && isMid == false) {
     direction = 0;
     isMid = true;
+  }
+
+  //check if claw is not in middle
+  if (pot < cMid || pot > cMid) {
+    isMid = false;
   }
 
   return direction; //return direction of claw rotation
