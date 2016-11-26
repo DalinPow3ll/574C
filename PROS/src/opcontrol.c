@@ -80,7 +80,7 @@ void operatorControl() {
 
 				//claw
 				clawDirection = clawGetDirection(); // get the input of the controller and set direction
-				clawMove(clawDirection); // move claw based on direction
+			  clawMove(clawDirection); // move claw based on direction
 
 
 				//button on the far right to trigger autonomous when no competition switch is connected
