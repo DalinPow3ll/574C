@@ -81,6 +81,10 @@ void operatorControl() {
 		    }
 
 
+				//claw
+				
+
+
 				//button on the far right to trigger autonomous when no competition switch is connected
 				if(joystickGetDigital(1, 8, JOY_RIGHT) && isOnline() == false) {
 		      autonomous(); // this calls the autonomous code
