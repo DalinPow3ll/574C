@@ -1,49 +1,63 @@
 #include "claw.h"
 #include "main.h"
 
-//variables in this scope
-int clawDirection = 0; // 0 = stop, 1 = open, 2 = close, 3 = low power
-int clawPosition = 0; // cposition of claw set by encoder
+//claw position variables
+int cOpen = 1000;
+int cMid = 1500;
+int cClose = 2000;
+bool isMid = false;
 
-// positions for the encoder
-// open always = 0
-int clawMid = 90;
-int clawClose = 150;
-
-//claw code
-void clawSet(int direction){
-	motorSet(8, direction); // claw motor 1
-	motorSet(9, direction); // claw motor 2
+//claw Actions
+void clawStop(){
+  motorStop(8);
+  motorStop(9);
 }
 
-void clawMove(int clawDirection){
-	//claw code
-	if(joystickGetDigital(1, 5, JOY_UP) && clawDirection != 1) {
-		clawSet(127); // pressing up, so claw should close
-		clawDirection = 1;
-	}
-	else if(joystickGetDigital(1, 5, JOY_DOWN) && clawDirection != 2) {
-		clawSet(-127); // pressing down, so claw should open
-		clawDirection = 2;
-	}
-	else if(clawDirection == 3){
-		// low power mode
-		clawSet(-50);
-	}
-	else if(clawDirection != 0){
-		clawSet(0); // no buttons are pressed, stop the claw
-	}
+void clawStart(int direction){
+  motorSet(8, direction);
+  motorSet(9, -direction);
 }
 
-void clawControl(){
-  int clawPosition = encoderGet(clawEnc); // retrieve encoder position
-  //figure out what to do based on where claw is
-  if(clawPosition < 10 && clawDirection == 1){
-    clawDirection = 0;
-  }else if(clawPosition == clawMid && clawDirection != 0){
-    clawDirection = 0;
-  }else if(clawPosition > clawClose && clawDirection == 2){
-    clawDirection = 0;
+
+//claw logic
+int clawGetDirection(){
+  int direction; //define direciton variable
+  int pot = analogRead(1);
+
+  //start joystick if button is pressed
+  if(joystickGetDigital(1, 6, JOY_UP)){
+    direction = 1 // 1 = closed
+  }else if(joystickGetDigital(1, 6, JOY_DOWN)){
+    direction = 2 // 2 = open
   }
-  clawMove(clawDirection); // moves claw based on clawDirection
+
+
+  //stop claw if potentiometer at limit
+  if (pot < cOpen) {
+    direction = 0; //stop claw if too open
+  }else if (pot > cclose) {
+    direction = 0; //stop claw if too closed
+  }else if (pot == cMid && isMid == false) {
+    direction = 0;
+    isMid = true;
+  }
+
+  //check if claw is not in middle
+  if (pot < cMid || pot > cMid) {
+    isMid = false;
+  }
+
+  return direction; //return direction of claw rotation
+}
+
+
+void clawMove(int direction){
+  //check direction and potentiometer
+  if(direction == 1){
+    clawStart(127);
+  }else if(direction == 2) {
+    clawStart(-127);
+  }else{
+    clawStop();
+  }
 }
