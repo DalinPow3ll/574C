@@ -33,7 +33,7 @@
 
 
 //function for the lift arm
-void liftSet(int direction){
+void lift(int direction){
 	direction = -direction; // invert arm direction
 	motorSet(4, direction); // set arm left 1
 	motorSet(5, direction); // set arm left 2
@@ -51,7 +51,7 @@ void operatorControl() {
 	int power;
   int turn;
 
-	int clawDirection; // current movement of the claw
+	//int clawDirection; // current movement of the claw
 	// 0 = stop, 1 = close, 2 = open
 
     while (1) {
@@ -63,24 +63,31 @@ void operatorControl() {
 
 
 				//lift code
-				liftSet(joystickGetAnalog(1, 3) - 30);
+				lift(joystickGetAnalog(1, 3) - 30);
 
 
 				//tip-bar code
 				if(joystickGetDigital(1, 7, JOY_UP)) {
 		      tipSet(127); // pressing up, so tip-bar should open
-		    }
-		    else if(joystickGetDigital(1, 7, JOY_DOWN)) {
+		    }else if(joystickGetDigital(1, 7, JOY_DOWN)) {
 		      tipSet(-127); // pressing down, so tip-bar should close
-		    }
-		    else {
+		    }else {
 		      tipSet(0); // no buttons are pressed, stop the tip-bar
 		    }
 
-
+				/*not using potentiometer right now
 				//claw
 				clawDirection = clawGetDirection(); // get the input of the controller and set direction
 			  clawMove(clawDirection); // move claw based on direction
+				*/
+				//alternate claw code
+				if(joystickGetDigital(1, 6, JOY_UP)) {
+		      clawStart(127);
+		    }else if(joystickGetDigital(1, 6, JOY_DOWN)) {
+		      clawStart(-127);
+		    }else{
+		      clawStart(0);
+		    }
 
 
 				//button on the far right to trigger autonomous when no competition switch is connected

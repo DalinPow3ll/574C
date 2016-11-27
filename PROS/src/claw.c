@@ -26,16 +26,16 @@ int clawGetDirection(){
 
   //start joystick if button is pressed
   if(joystickGetDigital(1, 6, JOY_UP)){
-    direction = 1 // 1 = closed
+    direction = 1; // 1 = closed
   }else if(joystickGetDigital(1, 6, JOY_DOWN)){
-    direction = 2 // 2 = open
+    direction = 2; // 2 = open
   }
 
 
   //stop claw if potentiometer at limit
   if (pot < cOpen) {
     direction = 0; //stop claw if too open
-  }else if (pot > cclose) {
+  }else if (pot > cClose) {
     direction = 0; //stop claw if too closed
   }else if (pot == cMid && isMid == false) {
     direction = 0;
