@@ -5,8 +5,8 @@
 
 // Sets the speeds of the left and right wheels of the claw
 void clawMove(int clawDirection);
-void clawGetDirection();
+int clawGetDirection();
 void clawStop();
-void clawStart();
+void clawStart(int direction);
 
 #endif // _claw_H_

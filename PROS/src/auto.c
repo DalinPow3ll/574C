@@ -78,10 +78,10 @@ void autonomous() {
 
   motorSet(1, 127); //bring out tip-bar
   drive(0); //drive forward
-  clawSet(127); //claw open
+  clawStart(127); //claw open
   liftSet(-127); //lift arm
   delay(700); //delay 700
-  clawSet(0); //stop claw
+  clawStop(); //stop claw
   delay(500); //delay 500
   liftSet(0);//stop arm
   delay(300); //delay 300
