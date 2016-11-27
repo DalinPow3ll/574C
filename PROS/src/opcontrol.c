@@ -69,18 +69,25 @@ void operatorControl() {
 				//tip-bar code
 				if(joystickGetDigital(1, 7, JOY_UP)) {
 		      tipSet(127); // pressing up, so tip-bar should open
-		    }
-		    else if(joystickGetDigital(1, 7, JOY_DOWN)) {
+		    }else if(joystickGetDigital(1, 7, JOY_DOWN)) {
 		      tipSet(-127); // pressing down, so tip-bar should close
-		    }
-		    else {
+		    }else {
 		      tipSet(0); // no buttons are pressed, stop the tip-bar
 		    }
 
-
+				/*not using potentiometer right now
 				//claw
 				clawDirection = clawGetDirection(); // get the input of the controller and set direction
 			  clawMove(clawDirection); // move claw based on direction
+				*/
+				//alternate claw code
+				if(joystickGetDigital(1, 6, JOY_UP)) {
+		      clawStart(127);
+		    }else if(joystickGetDigital(1, 6, JOY_DOWN)) {
+		      clawStart(-127)
+		    }else{
+		      clawStart(0);
+		    }
 
 
 				//button on the far right to trigger autonomous when no competition switch is connected
