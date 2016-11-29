@@ -34,7 +34,6 @@
 
 //function for the lift arm
 void lift(int direction){
-	direction = -direction; // invert arm direction
 	motorSet(4, direction); // set arm left 1
 	motorSet(5, direction); // set arm left 2
 	motorSet(6, direction); // set arm left 3
@@ -63,7 +62,7 @@ void operatorControl() {
 
 
 				//lift code
-				lift(joystickGetAnalog(1, 3) - 30);
+				lift(joystickGetAnalog(1, 3) - 15);
 
 
 				//tip-bar code
