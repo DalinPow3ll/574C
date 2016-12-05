@@ -39,14 +39,14 @@ void lift(int direction){
 		motorStop(5);
 		motorStop(6);
 		motorStop(7);
-	}else if(direction > 0 && analogRead(1) < 50){
+	}else if(direction > -15
+		 && analogRead(1) < 50){
 		motorStop(4);
 		motorStop(5);
 		motorStop(6);
 		motorStop(7);
 	}else if(direction < 0 && analogRead(1) > 1200){
 		direction = direction + 20;
-		direction = direction - analogRead(1)/600;
 		motorSet(4, direction); // set arm left 1
 		motorSet(5, direction); // set arm left 2
 		motorSet(6, direction); // set arm left 3
@@ -76,10 +76,17 @@ void operatorControl() {
 				//drive code
         power = joystickGetAnalog(1, 1); // vertical axis on left joystick
         turn  = joystickGetAnalog(1, 2); // horizontal axis on left joystick
-        motorSet(2, power + turn); // set left wheels
-				motorSet(9, power - turn); // set left wheels
-        motorSet(3, power - turn); // set right
-				motorSet(10, power + turn); // set right
+				if(power > 15 || power < -15 || turn > 15 || turn < -15){
+	        motorSet(2, power + turn); // set left wheels
+					motorSet(9, power - turn); // set left wheels
+	        motorSet(3, power - turn); // set right
+					motorSet(10, power + turn); // set right
+				}else{
+					motorStop(2);
+					motorStop(3);
+					motorStop(9);
+					motorStop(10);
+				}
 
 
 				//lift code

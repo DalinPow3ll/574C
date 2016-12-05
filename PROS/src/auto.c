@@ -48,18 +48,24 @@
 
    if (direction == 0 || direction == 3) {
      motorSet(2, 127);
+     motorSet(10, 127);
    }else if (direction == 4){
      motorSet(2, 0);
+     motorSet(10, 0);
    }else{
      motorSet(2, -127);
+     motorSet(10, -127);
    }
 
    if (direction == 0 || direction == 2) {
-     motorSet(3, 127);
+     motorSet(3, -127);
+     motorSet(9, -127);
    }else if (direction == 4){
-     motorSet(2, 0);
+     motorSet(3, 0);
+     motorSet(9, 0);
    }else{
-     motorSet(2, -127);
+     motorSet(3, 127);
+     motorSet(9, 127);
    }
 
  }
@@ -75,52 +81,15 @@ void autonomous() {
   4-7 arm
   8-9 claw
   */
-  /*
   motorSet(1, 127); //bring out tip-bar
   drive(0); //drive forward
   clawStart(127); //claw open
   liftSet(-127); //lift arm
-  delay(700); //delay 700
-  clawStop(); //stop claw
-  delay(500); //delay 500
-  liftSet(0);//stop arm
-  delay(300); //delay 300
+  delay(950);
+  liftSet(0); //stop lift
+  delay(450);
+  clawStop(0);//stop claw
+  motorSet(1, 0);
+  delay(1100); //delay 300
   drive(4); //stop
-  delay(100); //delay 100
-  drive(1); //reverse
-  delay(150); //delay 150
-  */
-  //drop arm
-  drive(4); //stop
-  //delay 100
-  //turn left/right
-  //delay 200
-  //drive forward
-  //delay 600
-  //stop
-  //claw grab
-  //delay 400
-  //raise arm
-  //delay 150
-  //turn left/right
-  //delay 100
-  //stop arm
-  //delay
-  //stop
-  //delay 50
-  //reverse
-  //lift arm
-  //delay 300
-  //stop arm
-  //delay 200
-  //stop
-  //open claw
-  //delay 250
-  //close claw
-  //lower arm
-  //delay 200
-  //stop claw
-  //delay 300
-  //stop arm
-
 }
