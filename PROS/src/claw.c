@@ -10,12 +10,10 @@ bool isMid = false;
 //claw Actions
 void clawStop(){
   motorStop(8);
-  motorStop(9);
 }
 
 void clawStart(int direction){
   motorSet(8, direction);
-  motorSet(9, -direction);
 }
 
 

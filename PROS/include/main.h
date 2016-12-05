@@ -120,7 +120,8 @@ void operatorControl();
 #endif
 
 //define custom variables
-Encoder clawEnc; // define encoder
+// digital port number limit switch is plugged into
+#define LIMIT_SWITCH 1
 
 
 #endif

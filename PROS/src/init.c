@@ -21,6 +21,8 @@
  * configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
  */
 void initializeIO() {
+  // configure the pin that the limit swith is plugged into as an input
+    pinMode(LIMIT_SWITCH, INPUT);
 }
 
 /*

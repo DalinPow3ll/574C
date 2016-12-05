@@ -34,10 +34,17 @@
 
 //function for the lift arm
 void lift(int direction){
-	motorSet(4, direction); // set arm left 1
-	motorSet(5, direction); // set arm left 2
-	motorSet(6, direction); // set arm left 3
-	motorSet(7, direction); // set arm left 4
+	if (direction < 0 && digitalRead(LIMIT_SWITCH) == LOW){
+		motorStop(4);
+		motorStop(5);
+		motorStop(6);
+		motorStop(7);
+	}else{
+		motorSet(4, direction); // set arm left 1
+		motorSet(5, direction); // set arm left 2
+		motorSet(6, direction); // set arm left 3
+		motorSet(7, direction); // set arm left 4
+	}
 }
 
 //tip-bar code
@@ -58,11 +65,13 @@ void operatorControl() {
         power = joystickGetAnalog(1, 1); // vertical axis on left joystick
         turn  = joystickGetAnalog(1, 2); // horizontal axis on left joystick
         motorSet(2, power + turn); // set left wheels
+				motorSet(9, power - turn); // set left wheels
         motorSet(3, power - turn); // set right
+				motorSet(10, power + turn); // set right
 
 
 				//lift code
-				lift(joystickGetAnalog(1, 3) - 15);
+				lift(joystickGetAnalog(1, 3) - 8);
 
 
 				//tip-bar code
