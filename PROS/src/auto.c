@@ -75,7 +75,7 @@ void autonomous() {
   4-7 arm
   8-9 claw
   */
-
+  /*
   motorSet(1, 127); //bring out tip-bar
   drive(0); //drive forward
   clawStart(127); //claw open
@@ -89,6 +89,7 @@ void autonomous() {
   delay(100); //delay 100
   drive(1); //reverse
   delay(150); //delay 150
+  */
   //drop arm
   drive(4); //stop
   //delay 100

@@ -34,11 +34,23 @@
 
 //function for the lift arm
 void lift(int direction){
-	if (direction < 0 && digitalRead(LIMIT_SWITCH) == LOW){
+	if (direction < 0 && analogRead(1) > 1850){
 		motorStop(4);
 		motorStop(5);
 		motorStop(6);
 		motorStop(7);
+	}else if(direction > 0 && analogRead(1) < 50){
+		motorStop(4);
+		motorStop(5);
+		motorStop(6);
+		motorStop(7);
+	}else if(direction < 0 && analogRead(1) > 1200){
+		direction = direction + 20;
+		direction = direction - analogRead(1)/600;
+		motorSet(4, direction); // set arm left 1
+		motorSet(5, direction); // set arm left 2
+		motorSet(6, direction); // set arm left 3
+		motorSet(7, direction); // set arm left 4
 	}else{
 		motorSet(4, direction); // set arm left 1
 		motorSet(5, direction); // set arm left 2
@@ -102,6 +114,10 @@ void operatorControl() {
 				if(joystickGetDigital(1, 8, JOY_RIGHT) && isOnline() == false) {
 		      autonomous(); // this calls the autonomous code
 		    }
+
+				//print out psition of potentiometer to the terminal
+				int readOut = analogRead(1);
+				printf("%d\n", readOut);
 
 
         delay(20);
