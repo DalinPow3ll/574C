@@ -11,7 +11,6 @@
  */
 
 #include "main.h"
-#include "claw.h"
 
 /*
  * Runs the user operator control code. This function will be started in its own task with the
@@ -109,11 +108,11 @@ void operatorControl() {
 				*/
 				//alternate claw code
 				if(joystickGetDigital(1, 6, JOY_UP)) {
-		      clawStart(127);
+		      motorSet(8, 127);
 		    }else if(joystickGetDigital(1, 6, JOY_DOWN)) {
-		      clawStart(-127);
+		      motorSet(8, -127);
 		    }else{
-		      clawStart(0);
+		      motorSet(8, 0);
 		    }
 
 
@@ -151,11 +150,11 @@ void operatorControl() {
 
 				//claw
 				if(joystickGetDigital(1, 5, JOY_UP)) {
-		      clawStart(127);
+		      motorSet(8, 127);
 		    }else if(joystickGetDigital(1, 5, JOY_DOWN)) {
-		      clawStart(-127);
+		      motorSet(8 ,-127);
 		    }else{
-		      clawStart(0);
+		      motorSet(8, 0);
 		    }
 			}
 

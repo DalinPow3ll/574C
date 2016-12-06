@@ -11,7 +11,6 @@
  */
 
 #include "main.h"
-#include "claw.h"
 /*
  * Runs the user autonomous code. This function will be started in its own task with the default
  * priority and stack size whenever the robot is enabled via the Field Management System or the
@@ -83,12 +82,12 @@ void autonomous() {
   */
   motorSet(1, 127); //bring out tip-bar
   drive(0); //drive forward
-  clawStart(127); //claw open
+  motorSet(8, 127); //claw open
   liftSet(-127); //lift arm
   delay(900);
   liftSet(0); //stop lift
   delay(400);
-  clawStop(0);//stop claw
+  motorSet(8, 0);//stop claw
   motorSet(1, 0);
   delay(1100); //delay 300
   drive(4); //stop

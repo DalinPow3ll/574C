@@ -119,9 +119,5 @@ void operatorControl();
 }
 #endif
 
-//define custom variables
-// digital port number limit switch is plugged into
-#define LIMIT_SWITCH 1
-
 
 #endif
