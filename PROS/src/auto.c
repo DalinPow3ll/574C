@@ -85,9 +85,9 @@ void autonomous() {
   drive(0); //drive forward
   clawStart(127); //claw open
   liftSet(-127); //lift arm
-  delay(950);
+  delay(900);
   liftSet(0); //stop lift
-  delay(450);
+  delay(400);
   clawStop(0);//stop claw
   motorSet(1, 0);
   delay(1100); //delay 300

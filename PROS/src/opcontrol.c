@@ -68,11 +68,11 @@ void tipSet(int direction){
 void operatorControl() {
 	int power;
   int turn;
-
+	int controller = 0;
 	//int clawDirection; // current movement of the claw
 	// 0 = stop, 1 = close, 2 = open
-
     while (1) {
+			if (controller == 1){
 				//drive code
         power = joystickGetAnalog(1, 1); // vertical axis on left joystick
         turn  = joystickGetAnalog(1, 2); // horizontal axis on left joystick
@@ -122,12 +122,59 @@ void operatorControl() {
 		      autonomous(); // this calls the autonomous code
 		    }
 
-				//print out psition of potentiometer to the terminal
-				int readOut = analogRead(1);
-				printf("%d\n", readOut);
+				//control switch
+				if(joystickGetDigital(1, 8, JOY_UP)){
+					controller = 0;
+					delay(500);
+				}
 
+			}else{
+				//nick's control
 
-        delay(20);
+				//driving
+				int right = -joystickGetAnalog(1, 2);
+				int left = joystickGetAnalog(1, 3);
+				//set motors
+				motorSet(2, left);
+				motorSet(10, left);
+				motorSet(3, right);
+				motorSet(9, right);
+
+				//arm
+				if(joystickGetDigital(1, 6, JOY_UP)){
+					lift(-127);
+				}else if(joystickGetDigital(1, 6, JOY_DOWN)){
+					lift(127);
+				}else{
+					lift(0);
+				}
+
+				//claw
+				if(joystickGetDigital(1, 5, JOY_UP)) {
+		      clawStart(127);
+		    }else if(joystickGetDigital(1, 5, JOY_DOWN)) {
+		      clawStart(-127);
+		    }else{
+		      clawStart(0);
+		    }
+			}
+
+			//tip-bar code
+			if(joystickGetDigital(1, 7, JOY_UP)) {
+				tipSet(127); // pressing up, so tip-bar should open
+			}else if(joystickGetDigital(1, 7, JOY_DOWN)) {
+				tipSet(-127); // pressing down, so tip-bar should close
+			}else {
+				tipSet(0); // no buttons are pressed, stop the tip-bar
+			}
+
+			//control switch
+			if(joystickGetDigital(1, 8, JOY_UP)){
+				controller = 1;
+				delay(500);
+			}
+
+      delay(20);
     }
 
 }
