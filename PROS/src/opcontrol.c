@@ -14,18 +14,17 @@ void operatorControl() {
 
 			//n fuctions are in nick.c
 			//m functions are in micah.c
-			
 			//check who's controls to use
 			if (controller == 1){
 				// micah specific controls
-				mDrive();
-				lift(joystickGetAnalog(1, 3) - 8); // micah lift control
-				mClaw(); // claw control
+				mDrive(); // micah drive
+				lift(joystickGetAnalog(1, 3) - 8); // micah lift
+				mClaw(); // micah claw
 			}else{
-				//nick's controls
-				nDrive(); //nick's Drive
-				nLift();
-				nClaw();
+				//nick specific controls
+				nDrive(); //nick Drive
+				nLift(); // nick lift
+				nClaw(); // nick claw
 			}
 
 
