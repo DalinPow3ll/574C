@@ -1,5 +1,8 @@
 #include "API.h"
 
+//variable for mClaw PID
+int position = analogRead(2);
+
 void mDrive(){
   //drive code
   int power;
@@ -20,15 +23,22 @@ void mDrive(){
 }
 
 void mClaw(){
+  int clawPot = analogRead(2); // set potentiometer value
+
   // claw code
   if(joystickGetDigital(1, 6, JOY_UP)) {
-    motorSet(8, 127);
-    if(analogRead(2) < 70){
-      motorSet(8, 30);// set low speed if not moving
-    }
+    motorSet(8, 127); //set motor
+    position = clawPot; // set current position of claw
   }else if(joystickGetDigital(1, 6, JOY_DOWN)) {
-    motorSet(8, -127);
+    motorSet(8, -127); // set motor
+    position = clawPot; // set current position of claw
   }else{
-    motorSet(8, 0);
+    // if statement for error correction
+    if(clawPot > position){
+      int dif = clawPot - position; // find the difference
+      motorSet(8, 127-(dif/2)); // set the motor to the make up the difference
+    }else{
+      motorSet(8, 0);
+    }
   }
 }

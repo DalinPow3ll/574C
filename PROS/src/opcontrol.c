@@ -39,6 +39,13 @@ void operatorControl() {
 		    delay(500);
 		  }
 
+			//kill switch
+			if(joystickGetDigital(1, 7, JOY_LEFT)){ //if left button pressed
+				motorStopAll(); //stop ALL motors
+				delay(10000); // wait ten seconds, gives time to turn off the bot
+			}
+
+			//potentiometer read out
 			int pot = analogRead(2);
 			printf("%d\n",pot);
 
