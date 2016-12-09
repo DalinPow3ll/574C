@@ -1,7 +1,7 @@
 #include "API.h"
 
 //variable for mClaw PID
-int position = analogRead(2);
+int position;
 
 void mDrive(){
   //drive code
@@ -11,9 +11,9 @@ void mDrive(){
   turn  = joystickGetAnalog(1, 2); // horizontal axis on left joystick
   if(power > 15 || power < -15 || turn > 15 || turn < -15){
     motorSet(2, power - turn); // set left wheels
-    motorSet(9, power + turn); // set left wheels
+    motorSet(9, power - turn); // set left wheels
     motorSet(3, power + turn); // set right
-    motorSet(10, power - turn); // set right
+    motorSet(10, power + turn); // set right
   }else{
     motorStop(2);
     motorStop(3);
