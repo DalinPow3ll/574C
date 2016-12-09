@@ -3,8 +3,8 @@
 
 void nDrive(){
   //driving
-  int right = -joystickGetAnalog(1, 2);
-  int left = joystickGetAnalog(1, 3);
+  int right = joystickGetAnalog(1, 2);
+  int left = -joystickGetAnalog(1, 3);
   //set motors
   motorSet(2, left);
   motorSet(10, left);
@@ -13,7 +13,7 @@ void nDrive(){
 }
 
 //nick's Lift mech
-void nLift(){
+void nLift(){               
   //lift
   if(joystickGetDigital(1, 6, JOY_UP)){
     lift(-127);

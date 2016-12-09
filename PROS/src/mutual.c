@@ -12,7 +12,7 @@ void tip(){
   }
 }
 
-void Lift(int direction){
+void lift(int direction){
 	if (direction < 0 && analogRead(1) > 1850){
 		motorStop(4);
 		motorStop(5);
@@ -42,19 +42,5 @@ void autoButton(){
   //auto button
   if(joystickGetDigital(1, 8, JOY_RIGHT) && isOnline() == false) {
     autonomous(); // this calls the autonomous code
-  }
-}
-
-//function to switch between control modes
-void controlSwitch(int controller){
-  //control switch
-  if(joystickGetDigital(1, 8, JOY_UP)){
-    if(controller == 0){
-      controller = 1;
-      delay(500);
-    }else{
-      controller = 0;
-      delay(500);
-    }
   }
 }

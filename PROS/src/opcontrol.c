@@ -6,7 +6,7 @@
 //main operator control statement
 void operatorControl() {
 
-	int controller = 0; // 0 = nick's controls, 1 = micah's
+	int cSet = 0; // 0 = nick's controls, 1 = micah's
 
 	//main loop
 		while (1) {
@@ -15,7 +15,7 @@ void operatorControl() {
 			//n fuctions are in nick.c
 			//m functions are in micah.c
 			//check who's controls to use
-			if (controller == 1){
+			if (cSet == 1){
 				// micah specific controls
 				mDrive(); // micah drive
 				lift(joystickGetAnalog(1, 3) - 8); // micah lift
@@ -31,9 +31,16 @@ void operatorControl() {
 			//mutual controls
 			//these funtctions are located in "mutual.c"
 			tip(); // tip bar control
-			controlSwitch(controller);// control switcher
 			autoButton(); // autonomous activator button
 
+			//control switcher
+			if(joystickGetDigital(1, 8, JOY_UP)){
+		    cSet = 1 - cSet; // switch control
+		    delay(500);
+		  }
+
+			int pot = analogRead(2);
+			printf("%d\n",pot);
 
       delay(20);
     }
