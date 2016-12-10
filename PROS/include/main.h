@@ -132,4 +132,13 @@ void operatorControl();
 #define drive3 9
 #define drive4 10
 
+//I/O ports
+#define armPot 1
+#define clawPot 2
+
+//claw position
+#define cMid 10
+#define cClose 103
+
+
 #endif
