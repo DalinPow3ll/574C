@@ -120,7 +120,7 @@ void operatorControl();
 }
 #endif
 
-#define tip 1
+#define tipBar 1
 #define drive1 2
 #define drive2 3
 #define lift1 4
