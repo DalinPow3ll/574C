@@ -1,34 +1,35 @@
 #include "API.h"
+#include "main.h"
 
 void aLift(int direction){
-  motorSet(4, direction); // set arm left 1
-  motorSet(5, direction); // set arm left 2
-  motorSet(6, direction); // set arm left 3
-  motorSet(7, direction); // set arm left 4
+  motorSet(lift1, direction); // set arm left 1
+  motorSet(lift2, direction); // set arm left 2
+  motorSet(lift3, direction); // set arm left 3
+  motorSet(lift4, direction); // set arm left 4
 }
 
 
 
 void aDrive (int direction) {
 if (direction == 0 || direction == 3) {
-    motorSet(2, 127);
-    motorSet(10, 127);
+    motorSet(drive1, 127);
+    motorSet(drive4, 127);
   }else if (direction == 4){
-    motorSet(2, 0);
-    motorSet(10, 0);
+    motorSet(drive1, 0);
+    motorSet(drive4, 0);
   }else{
-    motorSet(2, -127);
-    motorSet(10, -127);
+    motorSet(drive1, -127);
+    motorSet(drive4, -127);
   }
 
   if (direction == 0 || direction == 2) {
-    motorSet(3, -127);
-    motorSet(9, -127);
+    motorSet(drive2, -127);
+    motorSet(drive3, -127);
   }else if (direction == 4){
-    motorSet(3, 0);
-    motorSet(9, 0);
+    motorSet(drive2, 0);
+    motorSet(drive3, 0);
   }else{
-    motorSet(3, 127);
-    motorSet(9, 127);
+    motorSet(drive2, 127);
+    motorSet(drive3, 127);
   }
 }

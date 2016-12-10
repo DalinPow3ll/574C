@@ -1,4 +1,5 @@
 #include "API.h"
+#include "main.h"
 
 //drive variables
 int turn = 0;
@@ -45,26 +46,26 @@ void mDrive(){
     power = 0;
   }
 
-    //left wheels
-    motorSet(9, turn + power);
-    motorSet(3, turn + power);
+    //right wheels
+    motorSet(drive3, turn + power);
+    motorSet(drive2, turn + power);
 
-    // right wheels
-    motorSet(10, turn - power);
-    motorSet(2, turn - power);
+    //left wheels
+    motorSet(drive4, turn - power);
+    motorSet(drive1, turn - power);
 }
 
 void mClaw(){
   // claw code
   if(joystickGetDigital(1, 6, JOY_UP)) {
     if(analogRead(2) > 100){
-      motorSet(8, 40); // set motor low turn
+      motorSet(claw, 40); // set motor low turn
     }else{
-      motorSet(8, 127); //set motor full turn
+      motorSet(claw, 127); //set motor full turn
     }
   }else if(joystickGetDigital(1, 6, JOY_DOWN)) {
-    motorSet(8, -127); // set motor
+    motorSet(claw, -127); // set motor
   }else{
-    motorSet(8, 0);
+    motorSet(claw, 0);
   }
 }

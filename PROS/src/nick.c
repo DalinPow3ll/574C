@@ -6,14 +6,14 @@ void nDrive(){
   int right = joystickGetAnalog(1, 2);
   int left = -joystickGetAnalog(1, 3);
   //set motors
-  motorSet(2, left);
-  motorSet(10, left);
-  motorSet(3, right);
-  motorSet(9, right);
+  motorSet(drive1, left);
+  motorSet(drive4, left);
+  motorSet(drive2, right);
+  motorSet(drive3, right);
 }
 
 //nick's Lift mech
-void nLift(){               
+void nLift(){
   //lift
   if(joystickGetDigital(1, 6, JOY_UP)){
     lift(-127);
@@ -27,10 +27,10 @@ void nLift(){
 void nClaw(){
   //claw
   if(joystickGetDigital(1, 5, JOY_UP)) {
-    motorSet(8, 127);
+    motorSet(claw, 127);
   }else if(joystickGetDigital(1, 5, JOY_DOWN)) {
-    motorSet(8 ,-127);
+    motorSet(claw ,-127);
   }else{
-    motorSet(8, 0);
+    motorSet(claw, 0);
   }
 }
