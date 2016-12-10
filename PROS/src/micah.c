@@ -1,22 +1,56 @@
 #include "API.h"
 
+//drive variables
+int power = 0;
+int turn = 0;
+
 void mDrive(){
-  //drive code
-  int power;
-  int turn;
-  power = -joystickGetAnalog(1, 1); // vertical axis on left joystick
-  turn  = joystickGetAnalog(1, 2); // horizontal axis on left joystick
-  if(power > 15 || power < -15 || turn > 15 || turn < -15){
-    motorSet(2, power - turn); // set left wheels
-    motorSet(9, power + turn); // set left wheels
-    motorSet(3, power + turn); // set right
-    motorSet(10, power - turn); // set right
-  }else{
-    motorStop(2);
-    motorStop(3);
-    motorStop(9);
-    motorStop(10);
+
+  int joyP;
+  int joyT;
+
+  int slew = 3; //slew constant
+
+  joyP = -joystickGetAnalog(1, 1); // horizontal axis on left joystick
+  joyT = joystickGetAnalog(1, 2); // vertical axis on left joystick
+
+  //dead zone
+  if(abs(joyP) > 15){ // get the absolute value of joystick on horizontal axis
+    joyP = 0;
   }
+  if(abs(joyT) > 15 ){ // get the absolute value of joystick on horizontal axis
+    joyT = 0;
+  }
+
+
+  //slowly accelerate motors to where joystick is
+  //accelerate at rate of slew
+
+  //power
+  if(power < joyP-slew){
+    power += slew;
+  }else if(power > joyP+slew){
+    power -= slew;
+  }else{
+    power = 0;
+  }
+
+  //turn
+  if(turn < joyT-slew){
+    turn += slew;
+  }else if(turn > joyT+slew){
+    turn -= slew;
+  }else{
+    turn = 0;
+  }
+
+    //left wheels
+    motorSet(9, power + turn);
+    motorSet(3, power + turn);
+
+    // right wheels
+    motorSet(10, power - turn);
+    motorSet(2, power - turn);
 }
 
 void mClaw(){

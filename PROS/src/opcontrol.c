@@ -45,9 +45,6 @@ void operatorControl() {
 				delay(10000); // wait ten seconds, gives time to turn off the bot
 			}
 
-			//potentiometer read out
-			int pot = analogRead(2);
-			printf("%d\n",pot);
 
       delay(20);
     }
