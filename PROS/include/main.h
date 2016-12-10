@@ -114,10 +114,21 @@ void initialize();
  */
 void operatorControl();
 
+
 // End C++ export structure
 #ifdef __cplusplus
 }
 #endif
 
+#define tip 1
+#define drive1 2
+#define drive2 3
+#define lift1 4
+#define lift2 5
+#define lift3 6
+#define lift4 7
+#define claw 8
+#define drive3 9
+#define drive4 10
 
 #endif
