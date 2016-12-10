@@ -5,14 +5,6 @@
 
 void autonomous() {
 
-  /*
-  motor key
-  1 tip-bar
-  2, 3, 9, 10 drive
-  4-7 arm
-  8 claw
-  */
-
   /*drive key
   0 = forward
   1 = backward
@@ -26,13 +18,18 @@ void autonomous() {
   aDrive(0); //drive forward
   motorSet(claw, 127); //claw open
   aLift(-127); //lift arm
-  delay(900);
+  delay(800);
   aLift(0); //stop lift
-  delay(400);
+  delay(500);
   motorSet(claw, 0); //stop claw
   motorSet(tipBar, 0); // stop the tip bar
-  delay(1100);
+  delay(1200);
+  aLift(-127);
   aDrive(4); //stop
+  delay(100);
+  aDrive(0);
+  delay(75);
+  aDrive(4);
   delay(500);
   aDrive(1); //drive backward
   delay(1200);
