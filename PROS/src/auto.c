@@ -22,15 +22,15 @@ void autonomous() {
   */
 
   // basic auto program
-  motorSet(1, 127); //bring out tip-bar
+  motorSet(tipBar, 127); //bring out tip-bar
   aDrive(0); //drive forward
-  motorSet(8, 127); //claw open
+  motorSet(claw, 127); //claw open
   aLift(-127); //lift arm
   delay(900);
   aLift(0); //stop lift
   delay(400);
-  motorSet(8, 0); //stop claw
-  motorSet(1, 0); // stop the tip bar
+  motorSet(claw, 0); //stop claw
+  motorSet(tipBar, 0); // stop the tip bar
   delay(1100);
   aDrive(4); //stop
   delay(500);

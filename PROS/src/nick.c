@@ -27,7 +27,11 @@ void nLift(){
 void nClaw(){
   //claw
   if(joystickGetDigital(1, 5, JOY_UP)) {
-    motorSet(claw, 127);
+    if(analogRead(2) > 100){
+      motorSet(claw, 40); // set motor low turn
+    }else{
+      motorSet(claw, 127); //set motor full turn
+    }
   }else if(joystickGetDigital(1, 5, JOY_DOWN)) {
     motorSet(claw ,-127);
   }else{
