@@ -14,24 +14,26 @@ void autonomous() {
   */
 
   // basic auto program
-  motorSet(tipBar, 127); //bring out tip-bar
-  aDrive(0); //drive forward
-  motorSet(claw, 127); //claw open
-  aLift(-127); //lift arm
-  delay(800);
-  aLift(0); //stop lift
+  aDrive(1); // forward
+  motorSet(claw, 127); // close claw
+  delay(1500);
+  aDrive(4); //stop
+  delay(1300);
+  motorSet(claw, 40); //low power
+  delay(300);
+  aLift(-127); //lift the cube
   delay(500);
-  motorSet(claw, 0); //stop claw
-  motorSet(tipBar, 0); // stop the tip bar
-  delay(1200);
+  aLift(-20); //hold the cube
+  aDrive(3); //turn
+  delay(1300);
+  aDrive(4); //stop
+  delay(300);
+  aDrive(0); //reverse
+  delay(400);
   aLift(-127);
-  aDrive(4); //stop
-  delay(100);
-  aDrive(0);
-  delay(75);
-  aDrive(4);
-  delay(500);
-  aDrive(1); //drive backward
-  delay(1200);
-  aDrive(4); //stop
+  delay(300);
+  motorSet(claw, -127);
+  delay(300);
+  motorStopAll(); //stop everything
+  aDrive(4); // stop
 }
