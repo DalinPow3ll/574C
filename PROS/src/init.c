@@ -24,7 +24,6 @@ void initializeIO() {
   pinMode(controlPin, INPUT);
   pinMode(rightCubePin, INPUT);
   pinMode(leftCubePin, INPUT);
-  pinMode(straightPin, INPUT);
 }
 
 /*
