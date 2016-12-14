@@ -6,7 +6,13 @@
 //main operator control statement
 void operatorControl() {
 
-	int cSet = 0; // 0 = nick's controls, 1 = micah's
+	int cSet; // variable to set control mappings
+
+	if(digitalRead(controlPin) == HIGH){
+		cSet = 0; // 0 = nick's controls
+	}else{
+		cSet = 1; // 1 = micah's controls
+	}
 
 	//main loop
 		while (1) {

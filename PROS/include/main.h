@@ -135,6 +135,9 @@ void operatorControl();
 //I/O ports
 #define armPot 1
 #define clawPot 2
+#define controlPin 3
+#define leftCubePin 9
+#define rightCubePin 10
 
 //claw position
 #define cMid 10
