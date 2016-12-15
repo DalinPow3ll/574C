@@ -136,6 +136,8 @@ void operatorControl();
 #define armPot 1
 #define clawPot 2
 #define controlPin 3
+#define leftStarPin 9
+#define rightStarPin 10
 #define leftCubePin 11
 #define rightCubePin 12
 

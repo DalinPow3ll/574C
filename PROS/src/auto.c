@@ -19,7 +19,7 @@ void autonomous() {
   // all programs are contained inside of the "programs.c" file
   if (digitalRead(rightCubePin) == LOW){
     rCube();
-  }else if (digitalRead(leftCubePin == LOW)){
+  }else if (digitalRead(leftCubePin) == LOW){
     lCube();
   }else{
     straight();

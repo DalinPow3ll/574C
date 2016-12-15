@@ -46,17 +46,18 @@ void lCube(){
   delay(500);
   aLift(-20); //hold the cube
   aDrive(2); //turn
-  delay(420); //the most dank delay
+  delay(520); //the most dank delay
   aDrive(4); //stop
   delay(300);
   aDrive(0); //reverse
   delay(300);
   aLift(-127);
+  delay(500);
   motorSet(claw, -127);
   delay(300);
   aLift(0); // stop lift
   delay(600);
-  motorStopAll(); //stop everything
+  motorSet(claw, 0);
   aDrive(4); // stop
   motorStopAll(); //end routine
 }
@@ -66,15 +67,17 @@ void straight(){
   motorSet(tipBar, 127); //bring out tip
   aDrive(1); // drive forward
   motorSet(claw, 127); // open claw
-  delay(1500);
+  aLift(-127); //start lifting arm
+  delay(800);
+  aLift(0);
+  delay(800);
   motorSet(tipBar, 0); //stop the tip bars
   motorSet(claw, 0); // stop claw at half way
-  aLift(-127); //start lifting arm
   aDrive(4); // stop driving
-  delay(300);
-  aLift(0); // stop lift
-  delay(200);
+  delay(500);
   aDrive(0); // drive backward
+  delay(500);
+  motorSet(claw, 127);
   delay(500);
   motorStopAll(); //end routine
 }

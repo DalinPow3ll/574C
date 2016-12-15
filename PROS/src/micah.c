@@ -9,6 +9,13 @@ void mDrive(){
   turn = -joystickGetAnalog(1, 1); // horizontal axis on left joystick
   power = joystickGetAnalog(1, 2); // vertical axis on left joystick
 
+  if(abs(power) < 15){
+    power = 0;
+  }
+  if(abs(turn) < 15){
+    turn = 0;
+  }
+
 
     //right wheels
     motorSet(drive3, turn + power);
