@@ -9,6 +9,7 @@ void mDrive(){
   turn = -joystickGetAnalog(1, 1); // horizontal axis on left joystick
   power = joystickGetAnalog(1, 2); // vertical axis on left joystick
 
+  //dead zone
   if(abs(power) < 15){
     power = 0;
   }
