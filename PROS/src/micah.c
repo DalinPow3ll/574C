@@ -18,15 +18,6 @@ void mDrive(){
   joyT = -joystickGetAnalog(1, 1); // horizontal axis on left joystick
   joyP = joystickGetAnalog(1, 2); // vertical axis on left joystick
 
-  /*
-  //dead zone
-  if(abs(joyT) > 15){ // get the absolute value of joystick on horizontal axis
-    joyT = 0;
-  }
-  if(abs(joyP) > 15 ){ // get the absolute value of joystick on horizontal axis
-    joyP = 0;
-  }
-  */
 
   //slowly accelerate motors to where joystick is
   //accelerate at rate of slew

@@ -1,10 +1,38 @@
 #include "API.h"
 #include "mutual.h"
 
+//drive variables
+int right = 0;
+int left = 0;
+
 void nDrive(){
   //driving
-  int right = joystickGetAnalog(1, 2);
-  int left = -joystickGetAnalog(1, 3);
+  int joyR = joystickGetAnalog(1, 2);
+  int joyL = -joystickGetAnalog(1, 3);
+
+  int slew = 15; // slew constant
+
+  //slowly accelerate motors to where joystick is
+  //accelerate at rate of slew
+
+  //right
+  if(right < joyR){
+    right += slew;
+  }else if(right > joyR){
+    right -= slew;
+  }else{
+    right = 0;
+  }
+
+  //left
+  if(left < joyL){
+    left += slew;
+  }else if(left > joyL){
+    left -= slew;
+  }else{
+    left = 0;
+  }
+
   //set motors
   motorSet(drive1, left);
   motorSet(drive4, left);
