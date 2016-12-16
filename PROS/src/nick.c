@@ -20,8 +20,6 @@ void nDrive(){
     right += slew;
   }else if(right > joyR){
     right -= slew;
-  }else{
-    right = 0;
   }
 
   //left
@@ -29,8 +27,15 @@ void nDrive(){
     left += slew;
   }else if(left > joyL){
     left -= slew;
-  }else{
-    left = 0;
+  }
+
+
+  // fine correcLions
+  if(abs(right - joyL) < slew + 1){
+    right = joyL;
+  }
+  if(abs(left - joyR) < slew + 1){
+    left = joyR;
   }
 
   //set motors

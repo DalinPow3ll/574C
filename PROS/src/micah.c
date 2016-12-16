@@ -27,8 +27,6 @@ void mDrive(){
     turn += slew;
   }else if(turn > joyT){
     turn -= slew;
-  }else{
-    turn = 0;
   }
 
   //power
@@ -36,8 +34,16 @@ void mDrive(){
     power += slew;
   }else if(power > joyP){
     power -= slew;
-  }else{
-    power = 0;
+  }
+
+
+  // fine corrections
+  if(abs(turn - joyT) < slew + 1){
+    turn = joyT;
+  }
+
+  if(abs(power - joyP) < slew + 1){
+    power = joyP;
   }
 
 
