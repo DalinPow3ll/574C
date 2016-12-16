@@ -23,6 +23,8 @@ void autonomous() {
     lCube();
   }else if(digitalRead(rightStarPin) == LOW){
     rStar();
+  }else if(digitalRead(leftStarPin) == LOW){
+    lStar();
   }else{
     straight();
   }
