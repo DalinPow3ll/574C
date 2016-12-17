@@ -25,6 +25,8 @@ void autonomous() {
     rStar();
   }else if(digitalRead(leftStarPin) == LOW){
     lStar();
+  }else if(digitalRead(rSensorPin) == LOW){
+    rSensor();
   }else{
     straight();
   }

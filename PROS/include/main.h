@@ -136,13 +136,14 @@ void operatorControl();
 #define armPot 1
 #define clawPot 2
 #define controlPin 3
+#define rSensorPin 8
 #define leftStarPin 9
 #define rightStarPin 10
 #define leftCubePin 11
 #define rightCubePin 12
 
 //claw position
-#define cMid 2500
+#define cMid 2300
 #define cClose 3100
 
 

@@ -139,6 +139,44 @@ void lStar(){
   motorStopAll();
 }
 
+void rSensor(){
+  int toDo; // variable to tell how many tasks in a loop have finished
+  int loopClock; // for controlling delays inside of loops
+
+  motorSet(tipBar, 127); // open the tip bar, will need a loop delay bc there is no sensor
+
+
+
+  loopClock = 0; //reset loop clock for next loop
+
+  //simultaneous loop for claw, arm, and drive
+  while(1){
+    //loop will go until it sees a break
+
+    toDo = 2; // there are 2 tasks to do in this loop
+
+    //claw logic
+    if(analogRead(clawPot) < cMid){ //if claw not at middle position
+      motorSet(claw, 127); //move it forward
+    }else{
+      motorSet(claw, 0);
+      toDo--; // task complete
+    }
+
+    //tip bar stop
+    if (loopClock > 1300) { //if loop has been runnning for 1.3 seconds
+      motorSet(tipBar, 0); // stop the tip bar
+      toDo--; // task complete
+    }
+
+
+    if(toDo == 0){break;} //end loop if all tasks are complete
+
+    delay(20); //wait an interval to allow tip bar to complete
+    loopClock += 20; //add to the total amount of time this loop has been running
+  }
+}
+
 void straight(){
   motorSet(tipBar, 127); //bring out tip
   aDrive(1); // drive forward
