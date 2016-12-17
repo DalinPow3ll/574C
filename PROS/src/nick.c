@@ -19,28 +19,8 @@ void nDrive(){
   //slowly accelerate motors to where joystick is
   //accelerate at rate of slew
 
-  //right
-  if(right < joyR){
-    right += slew;
-  }else if(right > joyR){
-    right -= slew;
-  }
-
-  //left
-  if(left < joyL){
-    left += slew;
-  }else if(left > joyL){
-    left -= slew;
-  }
-
-
-  // fine correcLions
-  if(abs(right - joyL) < slew + 1){
-    right = joyL;
-  }
-  if(abs(left - joyR) < slew + 1){
-    left = joyR;
-  }
+  left = left + (joyL - left) * slew;
+  right = right + (joyR - right) * slew;
 
   //set motors
   motorSet(drive1, left);
@@ -64,10 +44,10 @@ void nLift(){
 void nClaw(){
   //claw
   if(joystickGetDigital(1, 5, JOY_UP)) {
-    if(analogRead(2) > 100){
-      motorSet(claw, 40); // set motor low turn
+    if(analogRead(clawPot) > cClose){
+      motorSet(claw, 40); // set motor low power
     }else{
-      motorSet(claw, 127); //set motor full turn
+      motorSet(claw, 127); //set motor full power
     }
   }else if(joystickGetDigital(1, 5, JOY_DOWN)) {
     motorSet(claw ,-127);
