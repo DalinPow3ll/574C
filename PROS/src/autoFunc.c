@@ -8,7 +8,13 @@ void aLift(int direction){
   motorSet(lift4, direction); // set arm left 4
 }
 
-
+void aTank(int left, int right){
+  left = -left;
+  motorSet(drive1, left);
+  motorSet(drive4, left);
+  motorSet(drive2, right);
+  motorSet(drive3, right);
+}
 
 void aDrive (int direction) {
 if (direction == 0 || direction == 3) {

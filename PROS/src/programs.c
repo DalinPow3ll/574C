@@ -2,6 +2,9 @@
 #include "API.h"
 #include "main.h"
 
+int RIGHT = -290;
+int LEFT = 290;
+
 //right cube function
 void rCube (){
   // right cube
@@ -143,17 +146,20 @@ void rSensor(){
   int toDo; // variable to tell how many tasks in a loop have finished
   int loopClock; // for controlling delays inside of loops
 
+  int margin = 10; //encoder turn margin
+
   motorSet(tipBar, 127); // open the tip bar, will need a loop delay bc there is no sensor
 
-
-
   loopClock = 0; //reset loop clock for next loop
+
+
+  encoderReset(driveEnc);
 
   //simultaneous loop for claw, arm, and drive
   while(1){
     //loop will go until it sees a break
 
-    toDo = 2; // there are 2 tasks to do in this loop
+    toDo = 3; // number of tasks to do in this loop
 
     //claw logic
     if(analogRead(clawPot) < cMid){ //if claw not at middle position
@@ -168,6 +174,17 @@ void rSensor(){
       motorSet(tipBar, 0); // stop the tip bar
       toDo--; // task complete
     }
+
+    //turn 90 degrees
+    if (encoderGet(driveEnc) > RIGHT + margin){
+      aTank(70,-70);
+    }else if(encoderGet(driveEnc) < RIGHT - margin){
+      aTank(-50,50); // on over shoot, go back
+    }else{
+      aDrive(4); // stop
+      toDo--;
+    }
+    printf("encoder: %d\n", encoderGet(driveEnc) );
 
 
     if(toDo == 0){break;} //end loop if all tasks are complete
