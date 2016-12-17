@@ -14,6 +14,7 @@ void tip(){
 }
 
 void lift(int direction){
+
 	if (direction < 0 && analogRead(1) > 1850){
 		motorStop(lift1);
 		motorStop(lift2);
@@ -26,7 +27,7 @@ void lift(int direction){
 		motorStop(lift3);
 		motorStop(lift4);
 	}else if(direction < 0 && analogRead(1) > 1200){
-		direction = direction + 20;
+		direction = direction + 25;
 		motorSet(lift1, direction); // set arm  1
 		motorSet(lift2, direction); // set arm  2
 		motorSet(lift3, direction); // set arm  3

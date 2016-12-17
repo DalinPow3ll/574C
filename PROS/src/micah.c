@@ -12,40 +12,18 @@ void mDrive(){
   int joyT;
   int joyP;
 
-  int slew = 15; //slew constant
+  float slew = 0.05; //slew constant
 
 
   joyT = -joystickGetAnalog(1, 1); // horizontal axis on left joystick
   joyP = joystickGetAnalog(1, 2); // vertical axis on left joystick
 
+  //deadzone
+  if(abs(joyT) < 15){joyT = 0;}
+  if(abs(joyP) < 15){joyP = 0;}
 
-  //slowly accelerate motors to where joystick is
-  //accelerate at rate of slew
-
-  //turn
-  if(turn < joyT){
-    turn += slew;
-  }else if(turn > joyT){
-    turn -= slew;
-  }
-
-  //power
-  if(power < joyP){
-    power += slew;
-  }else if(power > joyP){
-    power -= slew;
-  }
-
-
-  // fine corrections
-  if(abs(turn - joyT) < slew + 1){
-    turn = joyT;
-  }
-
-  if(abs(power - joyP) < slew + 1){
-    power = joyP;
-  }
-
+  turn = turn + (joyT - turn) * slew;
+  power = power + (joyP - power) * slew;
 
   //right wheels
   motorSet(drive3, turn + power);

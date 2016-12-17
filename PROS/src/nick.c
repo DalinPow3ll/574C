@@ -6,11 +6,15 @@ int right = 0;
 int left = 0;
 
 void nDrive(){
+
+  int slew = 12; // slew constant
+
   //driving
   int joyR = joystickGetAnalog(1, 2);
   int joyL = -joystickGetAnalog(1, 3);
 
-  int slew = 15; // slew constant
+  if(abs(joyR) < 15){joyR = 0;}
+  if(abs(joyL) < 15){joyL = 0;}
 
   //slowly accelerate motors to where joystick is
   //accelerate at rate of slew
