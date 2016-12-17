@@ -7,11 +7,12 @@ int left = 0;
 
 void nDrive(){
 
-  int slew = 12; // slew constant
+  float slew = 0.05; // slew constant
 
   //driving
   int joyR = joystickGetAnalog(1, 2);
   int joyL = -joystickGetAnalog(1, 3);
+
 
   if(abs(joyR) < 15){joyR = 0;}
   if(abs(joyL) < 15){joyL = 0;}
@@ -21,6 +22,7 @@ void nDrive(){
 
   left = left + (joyL - left) * slew;
   right = right + (joyR - right) * slew;
+  printf("Left: %d\n", left);
 
   //set motors
   motorSet(drive1, left);
