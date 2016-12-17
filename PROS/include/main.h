@@ -132,9 +132,13 @@ void operatorControl();
 #define drive3 9
 #define drive4 10
 
-//I/O ports
+//analog ports
 #define armPot 1
 #define clawPot 2
+
+//digital ports
+#define driveEncTop 1
+#define driveEncBot 2
 #define controlPin 3
 #define rSensorPin 8
 #define leftStarPin 9
@@ -146,5 +150,7 @@ void operatorControl();
 #define cMid 2300
 #define cClose 3100
 
+//encoder
+Encoder driveEnc;
 
 #endif

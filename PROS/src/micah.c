@@ -36,7 +36,6 @@ void mDrive(){
 
 void mClaw(){
   // claw code
-  printf("reading: %d\n", analogRead(clawPot));
   if(joystickGetDigital(1, 6, JOY_UP)) {
     if(analogRead(clawPot) > cClose){
       motorSet(claw, 50); // set motor low turn

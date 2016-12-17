@@ -40,6 +40,10 @@ void initializeIO() {
  * can be implemented in this task if desired.
  */
 void initialize() {
+
+  //encoder
+  driveEnc = encoderInit(driveEncTop, driveEncBot, true);
+
   //lcd using port uart1
   lcdInit(uart1);
   lcdClear(uart1);
