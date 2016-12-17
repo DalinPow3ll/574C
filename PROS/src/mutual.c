@@ -15,29 +15,14 @@ void tip(){
 
 void lift(int direction){
 
-	if (direction < 0 && analogRead(1) > 1850){
-		motorStop(lift1);
-		motorStop(lift2);
-		motorStop(lift3);
-		motorStop(lift4);
-	}else if(direction > -15
-		 && analogRead(1) < 50){
-		motorStop(lift1);
-		motorStop(lift2);
-		motorStop(lift3);
-		motorStop(lift4);
-	}else if(direction < 0 && analogRead(1) > 1200){
-		direction = direction + 25;
-		motorSet(lift1, direction); // set arm  1
-		motorSet(lift2, direction); // set arm  2
-		motorSet(lift3, direction); // set arm  3
-		motorSet(lift4, direction); // set arm  4
-	}else{
-		motorSet(lift1, direction); // set arm  1
-		motorSet(lift2, direction); // set arm  2
-		motorSet(lift3, direction); // set arm  3
-		motorSet(lift4, direction); // set arm  4
-	}
+  float slew = 0.04; //slew constant
+  int power = motorGet(lift1);
+  power = power + (direction - power) * slew;
+  power -= 20;
+	motorSet(lift1, power); // set arm  1
+	motorSet(lift2, power); // set arm  2
+	motorSet(lift3, power); // set arm  3
+	motorSet(lift4, power); // set arm  4
 }
 
 void autoButton(){

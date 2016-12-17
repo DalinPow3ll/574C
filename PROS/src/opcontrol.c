@@ -24,7 +24,7 @@ void operatorControl() {
 			if (cSet == 1){
 				// micah specific controls
 				mDrive(); // micah drive
-				lift(joystickGetAnalog(1, 3) - 8); // micah lift
+				lift(joystickGetAnalog(1, 3)); // micah lift
 				mClaw(); // micah claw
 			}else{
 				//nick specific controls
