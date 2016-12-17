@@ -18,7 +18,6 @@ void lift(int direction){
   float slew = 0.04; //slew constant
   int power = motorGet(lift1);
   power = power + (direction - power) * slew;
-  power -= 20;
 	motorSet(lift1, power); // set arm  1
 	motorSet(lift2, power); // set arm  2
 	motorSet(lift3, power); // set arm  3

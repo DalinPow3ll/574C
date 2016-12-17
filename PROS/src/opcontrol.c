@@ -45,7 +45,6 @@ void operatorControl() {
 		    delay(500);
 		  }
 
-
       delay(20);
     }
 

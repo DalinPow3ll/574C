@@ -142,8 +142,8 @@ void operatorControl();
 #define rightCubePin 12
 
 //claw position
-#define cMid 10
-#define cClose 103
+#define cMid 2500
+#define cClose 3100
 
 
 #endif
