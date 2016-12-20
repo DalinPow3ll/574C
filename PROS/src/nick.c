@@ -22,7 +22,6 @@ void nDrive(){
 
   left = left + (joyL - left) * slew;
   right = right + (joyR - right) * slew;
-  printf("Left: %d\n", left);
 
   //set motors
   motorSet(drive1, left);
