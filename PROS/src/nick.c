@@ -7,7 +7,7 @@ int left = 0;
 
 void nDrive(){
 
-  float slew = 0.05; // slew constant
+  float slew = 0.1; // slew constant
 
   //driving
   int joyR = joystickGetAnalog(1, 2);
@@ -45,11 +45,7 @@ void nLift(){
 void nClaw(){
   //claw
   if(joystickGetDigital(1, 5, JOY_UP)) {
-    if(analogRead(clawPot) > cClose){
-      motorSet(claw, 40); // set motor low power
-    }else{
-      motorSet(claw, 127); //set motor full power
-    }
+    motorSet(claw, 127); //set motor full power
   }else if(joystickGetDigital(1, 5, JOY_DOWN)) {
     motorSet(claw ,-127);
   }else{

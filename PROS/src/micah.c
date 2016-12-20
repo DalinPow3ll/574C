@@ -12,7 +12,7 @@ void mDrive(){
   int joyT;
   int joyP;
 
-  float slew = 0.05; //slew constant
+  float slew = 0.1; //slew constant
 
 
   joyT = -joystickGetAnalog(1, 1); // horizontal axis on left joystick
@@ -37,11 +37,7 @@ void mDrive(){
 void mClaw(){
   // claw code
   if(joystickGetDigital(1, 6, JOY_UP)) {
-    if(analogRead(clawPot) > cClose){
-      motorSet(claw, 50); // set motor low turn
-    }else{
-      motorSet(claw, 127); //set motor full turn
-    }
+    motorSet(claw, 127); //set motor full turn
   }else if(joystickGetDigital(1, 6, JOY_DOWN)) {
     motorSet(claw, -127); // set motor
   }else{
