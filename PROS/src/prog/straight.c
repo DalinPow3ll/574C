@@ -5,9 +5,9 @@ void straight(){
   aDrive(1); // drive forward
   motorSet(claw, 127); // open claw
   aLift(-127); //start lifting arm
-  delay(800);
+  delay(900);
   aLift(0);
-  delay(800);
+  delay(850);
   motorSet(tipBar, 0); //stop the tip bars
   motorSet(claw, 0); // stop claw at half way
   aDrive(4); // stop driving
