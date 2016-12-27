@@ -14,7 +14,7 @@ void rStar(){
   aDrive(1); // drive forward
   delay(800);
   motorSet(claw, 127); //close claw
-  delay(600);
+  delay(800);
   motorStopAll();
   motorSet(claw, 40); // hold stars
   aLift(-127); //lift stars up

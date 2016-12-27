@@ -5,7 +5,7 @@ void rCube (){
   // right cube
   aDrive(1); // forward
   motorSet(claw, 127); // close claw
-  delay(1350);
+  delay(11);
   aDrive(4); //stop
   delay(1600);
   motorSet(claw, 40); //low power
@@ -35,16 +35,16 @@ void lCube(){
   // left cube
   aDrive(1); // forward
   motorSet(claw, 127); // close claw
-  delay(1350);
+  delay(11);
   aDrive(4); //stop
   delay(1600);
   motorSet(claw, 40); //low power
   delay(300);
   aLift(-127); //lift the cube
-  delay(300);
+  delay(500);
   aLift(-20); //hold the cube
   aDrive(2); //turn
-  delay(900); // left is slower for some reason
+  delay(520);
   aDrive(4); //stop
   delay(300);
   aDrive(0); //reverse
@@ -52,7 +52,7 @@ void lCube(){
   aLift(-127);
   delay(500);
   motorSet(claw, -127);
-  delay(800);
+  delay(500);
   aLift(0); // stop lift
   delay(600);
   motorSet(claw, 0);
