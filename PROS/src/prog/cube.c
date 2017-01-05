@@ -3,11 +3,13 @@
 //right cube function
 void rCube (){
   // right cube
+  motorSet(tipBar, 127); // start tipbar
   aDrive(1); // forward
   motorSet(claw, 127); // close claw
-  delay(11);
+  delay(1100);
   aDrive(4); //stop
-  delay(1600);
+  motorSet(tipBar, 0); // stop tip bar
+  delay(2000);
   motorSet(claw, 40); //low power
   delay(300);
   aLift(-127); //lift the cube
@@ -18,26 +20,37 @@ void rCube (){
   aDrive(4); //stop
   delay(300);
   aDrive(0); //reverse
-  delay(300);
   aLift(-127);
   delay(500);
   motorSet(claw, -127);
-  delay(500);
+  delay(800);
   aLift(0); // stop lift
   delay(600);
   motorSet(claw, 0);
   aDrive(4); // stop
-  motorStopAll(); //end routine
+  motorStopAll(); //pause
+  delay(500);
+  aLift(80); //bring lift down
+  delay(900);
+  aLift(40); //slower
+  aDrive(1); //forward
+  delay(400);
+  aLift(0);//stop lift
+  aDrive(4);//stop bot
+  motorStopAll();//end routine
 }
 
 
 void lCube(){
   // left cube
   aDrive(1); // forward
+  motorSet(tipBar, 127); // start tipbar
+  aDrive(1); // forward
   motorSet(claw, 127); // close claw
-  delay(11);
+  delay(1100);
   aDrive(4); //stop
-  delay(1600);
+  motorSet(tipBar, 0); // stop tip bar
+  delay(2000);
   motorSet(claw, 40); //low power
   delay(300);
   aLift(-127); //lift the cube
@@ -48,14 +61,22 @@ void lCube(){
   aDrive(4); //stop
   delay(300);
   aDrive(0); //reverse
-  delay(300);
   aLift(-127);
   delay(500);
   motorSet(claw, -127);
-  delay(500);
+  delay(800);
   aLift(0); // stop lift
   delay(600);
   motorSet(claw, 0);
   aDrive(4); // stop
-  motorStopAll(); //end routine
+  motorStopAll(); //pause
+  delay(500);
+  aLift(80); //bring lift down
+  delay(900);
+  aLift(40); //slower
+  aDrive(1); //forward
+  delay(400);
+  aLift(0);//stop lift
+  aDrive(4);//stop bot
+  motorStopAll();//end routine
 }

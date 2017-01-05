@@ -12,9 +12,9 @@ void rStar(){
   aDrive(4); //stop bot
   delay(200);
   aDrive(1); // drive forward
-  delay(800);
+  delay(300);
   motorSet(claw, 127); //close claw
-  delay(800);
+  delay(700);
   motorStopAll();
   motorSet(claw, 40); // hold stars
   aLift(-127); //lift stars up
@@ -26,12 +26,12 @@ void rStar(){
   delay(300);
   aDrive(3); // turn left
   delay(330);
-  aDrive(4);
+  aTank(-127,-80); // reverse
   delay(300);
-  aDrive(0); // reverse
+  aDrive(0);
   delay(1200);
   aLift(-127);
-  delay(200);
+  delay(600);
   motorSet(claw, -127);
   delay(500);
   aLift(0);

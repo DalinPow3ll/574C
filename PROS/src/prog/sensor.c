@@ -3,15 +3,17 @@
 //program includes
 #include "prog/straight.h"
 
-int RIGHT = -260;
-int LEFT = 260;
+int RIGHT90 = -260;
+int LEFT90 = 260;
 
+int RIGHTCUBE = 330;
+int LEFTCUBE = 330;
+
+int margin = 10; //encoder turn margin
 
 void rSensor(){
   int toDo; // variable to tell how many tasks in a loop have finished
   int loopClock; // for controlling delays inside of loops
-
-  int margin = 10; //encoder turn margin
 
   motorSet(tipBar, 127); // open the tip bar, will need a loop delay bc there is no sensor
 
@@ -27,10 +29,10 @@ void rSensor(){
     toDo = 3; // number of tasks to do in this loop
 
     //claw logic
-    if(analogRead(clawPot) < cMid){ //if claw not at middle position
+    if(analogRead(clawPot) < cClose){ //if claw not at closed position
       motorSet(claw, 127); //move it forward
     }else{
-      motorSet(claw, 0);
+      motorSet(claw, 30); //low power
       toDo--; // task complete
     }
 
@@ -40,16 +42,13 @@ void rSensor(){
       toDo--; // task complete
     }
 
-    //turn 90 degrees
-    if (encoderGet(driveEnc) > RIGHT + margin){
-      aTank(70,-70);
-    }else if(encoderGet(driveEnc) < RIGHT - margin){
-      aTank(-50,50); // on over shoot, go back
+    //drive forward
+    if (encoderGet(driveEnc) < 820){
+      aDrive(1); //drive forward
     }else{
       aDrive(4); // stop
       toDo--;
     }
-    printf("encoder: %d\n", encoderGet(driveEnc) );
 
 
     if(toDo == 0){break;} //end loop if all tasks are complete
@@ -57,4 +56,18 @@ void rSensor(){
     delay(20); //wait an interval to allow tip bar to complete
     loopClock += 20; //add to the total amount of time this loop has been running
   }
+
+
+  /*
+  //turn to throw
+  if (encoderGet(driveEnc) > RIGHTCUBE + margin){
+    aTank(70,-70);
+  }else if(encoderGet(driveEnc) < RIGHTCUBE - margin){
+    aTank(-50,50); // on over shoot, go back
+  }else{
+    aDrive(4); // stop
+    toDo--;
+  }
+  */
+
 }
