@@ -36,7 +36,7 @@ void mDrive(){
 
 void mClaw(){
   // claw code
-  if(joystickGetDigital(1, 6, JOY_UP)) {
+  if(joystickGetDigital(1, 6, JOY_UP) && analogRead(clawPot) < cSqz) {
     motorSet(claw, 127); //set motor full turn
   }else if(joystickGetDigital(1, 6, JOY_DOWN)) {
     motorSet(claw, -127); // set motor

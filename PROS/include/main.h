@@ -149,6 +149,7 @@ void operatorControl();
 //claw position
 #define cMid 2300
 #define cClose 3100
+#define cSqz 3750
 
 //encoder
 Encoder driveEnc;

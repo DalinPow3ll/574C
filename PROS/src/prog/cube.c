@@ -57,7 +57,7 @@ void lCube(){
   delay(500);
   aLift(-20); //hold the cube
   aDrive(2); //turn
-  delay(520);
+  delay(920);
   aDrive(4); //stop
   delay(300);
   aDrive(0); //reverse

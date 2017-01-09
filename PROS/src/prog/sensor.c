@@ -43,7 +43,7 @@ void rSensor(){
       toDo--; // task complete
     }
 
-    if(analogRead(clawPot) > cClose){
+    if(analogRead(clawPot) > cClose - 200){
       //turn left
       if (encoderGet(driveEnc) < LEFT45 - margin){
         aTank(-90, 90);
@@ -99,7 +99,7 @@ void rSensor(){
   aLift(-30); //hold the stars up
 
   //reverse
-  while (encoderGet(driveEnc) > 700){
+  while (encoderGet(driveEnc) > 900){
     aDrive(0);
   }
 
@@ -107,26 +107,54 @@ void rSensor(){
   encoderReset(driveEnc); // encoder reset
 
   //slant reverse and throw
-  while (encoderGet(driveEnc) > -1400){
-    aTank(-127,-40); //slant reverse
+  while (encoderGet(driveEnc) > -1300){
+    aTank(-127,-50); //slant reverse
   }
 
   aDrive(0); //reverse
   aLift(-127); //lift
+  delay(800);
   motorSet(claw, -127);// throw
   delay(500);
   aDrive(4); //stop bot
-  
+
   motorStopAll(); //pause
 
+  delay(200);
+  aLift(80); //bring lift down
+  delay(900);
+  aLift(40); //slower
+  delay(400);
+  aLift(0);//stop lift
 
 
-  //dummy loop
+
+
+  loopClock = 0; //reset loop clock for next loop
+  encoderReset(driveEnc); // encoder reset
+
+
+
+  //cube grabber
   while(1){
-    toDo = 0; //tasks in this loop
+    toDo = 2; //tasks in this loop
 
-    loopClock = 0; //reset loop clock for next loop
-    encoderReset(driveEnc); // encoder reset
+
+    //drive forward + right
+    if (encoderGet(driveEnc) < 900){
+      aTank(127, 100);
+    }else{
+      aDrive(4); // stop
+      toDo--;
+    }
+
+    //claw
+    if(analogRead(clawPot) > cClose - 100){
+      motorSet(claw, -127);
+    }else{
+      motorSet(claw, 0);
+      toDo--;
+    }
 
     if(toDo == 0){break;} //end loop if all tasks are complete
 
@@ -134,4 +162,20 @@ void rSensor(){
     loopClock += 20; //add to the total amount of time this loop has been running
   }
 
+  loopClock = 0;
+
+  while(analogRead(clawPot) < cClose - 400 || loopClock > 1500){
+    motorSet(claw, 127);
+    delay(20); //wait an interval to allow tip bar to complete
+    loopClock += 20; //add to the total amount of time this loop has been running
+  }
+  motorSet(claw, 40); //squeeze
+
+  aDrive(0);
+  delay(800);
+  aLift(-127); //lift
+  delay(800);
+  motorSet(claw, -127);// throw
+  delay(500);
+  aDrive(4); //stop bot
 }
