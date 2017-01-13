@@ -11,7 +11,7 @@
  */
 
 #include "main.h"
-
+#include "LCD.h"
 /*
  * Runs pre-initialization code. This function will be started in kernel mode one time while the
  * VEX Cortex is starting up. As the scheduler is still paused, most API functions will fail.
@@ -45,8 +45,7 @@ void initialize() {
   driveEnc = encoderInit(driveEncTop, driveEncBot, true);
 
   //lcd using port uart1
-  lcdInit(uart1);
-  lcdClear(uart1);
-  lcdSetText(uart1, 1, "Initiated");
-  lcdSetText(uart1, 2, "running v1.5.05");
+  LCDInit();
+  TaskHandle secondTaskHandle = taskRunLoop(LCDTasker, 500);
+
 }

@@ -43,6 +43,7 @@
 // This prevents multiple inclusion, which isn't bad for this file but is good practice
 #define MAIN_H_
 
+
 #include <API.h>
 
 // Allow usage of this file in C++ programs
@@ -147,9 +148,9 @@ void operatorControl();
 #define rightCubePin 12
 
 //claw position
-#define cMid 2300
-#define cClose 3100
-#define cSqz 3750
+#define cMid 3650
+#define cClose 3250
+#define cSqz 3250
 
 //encoder
 Encoder driveEnc;

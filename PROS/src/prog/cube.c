@@ -9,7 +9,7 @@ void rCube (){
   delay(1100);
   aDrive(4); //stop
   motorSet(tipBar, 0); // stop tip bar
-  delay(2000);
+  delay(700);
   motorSet(claw, 40); //low power
   delay(300);
   aLift(-127); //lift the cube
@@ -50,7 +50,7 @@ void lCube(){
   delay(1100);
   aDrive(4); //stop
   motorSet(tipBar, 0); // stop tip bar
-  delay(2000);
+  delay(700);
   motorSet(claw, 40); //low power
   delay(300);
   aLift(-127); //lift the cube
