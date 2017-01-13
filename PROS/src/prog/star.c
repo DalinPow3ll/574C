@@ -11,8 +11,10 @@ void rStar(){
   encoderReset(driveEnc);
   loopClock = 0;
   while(1){
+    char text[16];
+    sprintf(text, "cClose: %d", cClose);
     lcdClear(uart1);
-    lcdSetText(uart1, 1, "autonomous");
+    lcdSetText(uart1, 1, text);
     toDo = 2; //amount of tasks
 
     toDo -= tipOut(loopClock);

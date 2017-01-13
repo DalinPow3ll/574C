@@ -7,7 +7,7 @@ int clawForward(int position){
   int complete = 0;
 
   //claw logic
-  if(analogRead(clawPot) < position){ //if claw not at closed position
+  if(analogRead(clawPot) > position){ //if claw not at closed position
     motorSet(claw, 127); //move it forward
   }else{
     motorSet(claw, 0); //stop claw

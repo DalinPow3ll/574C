@@ -148,9 +148,9 @@ void operatorControl();
 #define rightCubePin 12
 
 //claw position
-#define cMid 3650
-#define cClose 3250
-#define cSqz 3250
+#define cMid 2350
+#define cClose 1360
+#define cSqz 700
 
 //encoder
 Encoder driveEnc;

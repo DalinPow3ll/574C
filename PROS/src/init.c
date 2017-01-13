@@ -47,5 +47,4 @@ void initialize() {
   //lcd using port uart1
   LCDInit();
   TaskHandle secondTaskHandle = taskRunLoop(LCDTasker, 500);
-
 }

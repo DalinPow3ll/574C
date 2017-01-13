@@ -46,6 +46,7 @@ void operatorControl() {
 		  }
 
 			//printf("ticks: %d\n", encoderGet(driveEnc));
+
       delay(20);
     }
 
