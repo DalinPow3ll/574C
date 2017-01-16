@@ -120,7 +120,11 @@ void operatorControl();
 #ifdef __cplusplus
 }
 #endif
+// Bootloader -=+=- DEBGUG -=+=- -=+=- DEBGUG -=+=- -=+=- DEBGUG -=+=- -=+=- DEBGUG -=+=- -=+=- DEBGUG -=+=-
 
+bool BootLoader = true;
+
+// Bootloader -=+=- DEBGUG -=+=- -=+=- DEBGUG -=+=- -=+=- DEBGUG -=+=- -=+=- DEBGUG -=+=- -=+=- DEBGUG -=+=-
 //define ports
 #define tipBar 1
 #define drive1 2

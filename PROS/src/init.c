@@ -26,13 +26,7 @@ void initializeIO() {
   pinMode(leftCubePin, INPUT);
 }
 
-
-void Safeboot(bool Bootloader){
-  if(isOnline() == true){
-    Bootloader = true;
-  }
-    else( Bootloader = false);
-  }
+#include "LCD.h"
 
 
 
