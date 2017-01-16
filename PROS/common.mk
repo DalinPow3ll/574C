@@ -27,7 +27,7 @@ ASMEXT=s
 CEXT=c
 CPPEXT=cpp
 HEXT=h
-INCLUDE=-I$(ROOT)/include -I$(ROOT)/src -I$(ROOT)/src/prog
+INCLUDE=-I$(ROOT)/include -I$(ROOT)/src
 OUTBIN=output.bin
 OUTNAME=output.elf
 

@@ -1,10 +1,10 @@
 #include "main.h"
 
 //program includes
-#include "prog/straight.h"
-#include "prog/cube.h"
-#include "prog/star.h"
-#include "prog/sensor.h"
+#include "straight.h"
+#include "cube.h"
+#include "star.h"
+#include "sensor.h"
 
 void autonomous() {
 

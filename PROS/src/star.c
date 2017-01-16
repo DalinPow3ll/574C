@@ -27,7 +27,7 @@ void rStar(){
   while(1){
     toDo = 1;
 
-    toDo -= tankDriveEnc(60, 10, -100);
+    toDo -= tankDriveEnc(-60, -10, -100);
 
     //end of loop functions
     if(toDo == 0){break;} //end loop if all tasks are complete
