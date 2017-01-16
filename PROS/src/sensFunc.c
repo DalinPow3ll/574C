@@ -51,7 +51,7 @@ int tankDriveEnc (int left, int right, int distance){
   if (encoderGet(driveEnc) < distance - margin){
     aTank(left, right);
   }else if(encoderGet(driveEnc) > distance + margin){
-    aTank(left/3, right/3);
+    aTank(-left, -right);
   }else{
     aDrive(4); // stop
     complete = 1;

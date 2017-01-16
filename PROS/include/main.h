@@ -149,7 +149,7 @@ void operatorControl();
 
 //claw position
 #define cMid 2350
-#define cClose 1360
+#define cClose 1560
 #define cSqz 700
 
 //encoder
