@@ -27,13 +27,13 @@ void initializeIO() {
 }
 
 
-/*
-int Safeboot(int bootloader){
-	if(bootloader == 1){
-		Disable all Atoms
-		}
-	}
-*/
+void Safeboot(bool Bootloader){
+  if(isOnline() == true){
+    Bootloader = true;
+  }
+    else( Bootloader = false);
+  }
+
 
 
 /*
@@ -53,6 +53,10 @@ void initialize() {
 
   //encoder
   driveEnc = encoderInit(driveEncTop, driveEncBot, true);
+
+
+  #pragma GCC diagnostic ignored "-Wunused-variable"
+
 
   //lcd using port uart1
   LCDInit();
