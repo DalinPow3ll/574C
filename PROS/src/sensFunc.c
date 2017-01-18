@@ -1,16 +1,27 @@
 #include "progInc.h"
 #include "main.h"
 
+int liftLoop(int loopClock, int time, int speed, int endPower){
+  int complete = 0;
+  //tip bar stop
+  if (loopClock < time) {
+    aLift(speed);
+  }else{
+    aLift(endPower);
+    complete = 1;
+  }
 
+  return complete;
+}
 
-int clawForward(int position){
+int clawForward(int position, int squeeze){
   int complete = 0;
 
   //claw logic
   if(analogRead(clawPot) > position){ //if claw not at closed position
     motorSet(claw, 127); //move it forward
   }else{
-    motorSet(claw, 0); //stop claw
+    motorSet(claw, squeeze); //stop claw
     complete = 1; // task complete
   }
 

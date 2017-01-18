@@ -1,7 +1,7 @@
 #include "progInc.h"
 
 //program includes
-#include "prog/straight.h"
+#include "straight.h"
 
 int RIGHT90 = -260;
 int LEFT90 = 260;

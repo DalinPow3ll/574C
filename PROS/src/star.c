@@ -6,34 +6,51 @@ int loopClock;
 
 
 void rStar(){
-  printf("autonomous");
 
-  //starting loop
-  encoderReset(driveEnc);
-  loopClock = 0;
+  //claw out
+  loopClock = 0; encoderReset(driveEnc);
   while(1){
     toDo = 2;
-
     toDo -= tipOut(loopClock);
-    toDo -= clawForward(cClose);
-
-    //end of loop functions
-    if(toDo == 0){break;} //end loop if all tasks are complete
-    delay(10); //wait an interval to allow tip bar to complete
-    loopClock += 10; //add to the total amount of time this loop has been running
+    toDo -= clawForward(cClose, 0);
+    if(toDo == 0){break;}delay(10);loopClock += 10;
   }
 
-  encoderReset(driveEnc);
+
+  //reverse
+  loopClock = 0; encoderReset(driveEnc);
   while(1){
     toDo = 1;
-
-    toDo -= tankDriveEnc(-60, -10, -100);
-
-    //end of loop functions
-    if(toDo == 0){break;} //end loop if all tasks are complete
-    delay(10); //wait an interval to allow tip bar to complete
-    loopClock += 10; //add to the total amount of time this loop has been running
+    toDo -= tankDriveEnc(60, 10, -100);
+    if(toDo == 0){break;}delay(10);loopClock += 10;
   }
+
+
+  //forward
+  loopClock = 0; encoderReset(driveEnc);
+  while(1){
+    toDo = 1;
+    toDo -= tankDriveEnc(127, 110, 1200);
+    if(toDo == 0){break;}delay(10);loopClock += 10;
+  }
+
+  //grab and reverse
+  loopClock = 0; encoderReset(driveEnc);
+  while(1){
+    toDo = 3;
+    if(loopClock > 700){toDo -= tankDriveEnc(127, 50, -1300); toDo -= liftLoop(loopClock, 1200, -127, -35);}
+    toDo -= clawForward(cSqz, 40);
+    if(toDo == 0){break;}delay(10);loopClock += 10;
+  }
+
+  loopClock = 0; encoderReset(driveEnc);
+  while(1){
+    toDo = 2;
+    toDo -= liftLoop(loopClock, 1500, -127, 0);
+    if(loopClock > 900){toDo -= clawBack(cMid);}
+    if(toDo == 0){break;}delay(10);loopClock += 10;
+  }
+
 }
 
 
