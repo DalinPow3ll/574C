@@ -30,7 +30,7 @@ void rStar(){
   loopClock = 0; encoderReset(driveEnc);
   while(1){
     toDo = 1;
-    toDo -= tankDriveEnc(127, 110, 1200);
+    toDo -= tankDriveEnc(125, 127, 1200);
     if(toDo == 0){break;}delay(10);loopClock += 10;
   }
 
@@ -38,7 +38,7 @@ void rStar(){
   loopClock = 0; encoderReset(driveEnc);
   while(1){
     toDo = 3;
-    if(loopClock > 700){toDo -= tankDriveEnc(127, 50, -1300); toDo -= liftLoop(loopClock, 1200, -127, -35);}
+    if(loopClock > 700){toDo -= tankDriveEnc(127, 68, -1250); toDo -= liftLoop(loopClock, 1200, -127, -35);}
     toDo -= clawForward(cSqz, 40);
     if(toDo == 0){break;}delay(10);loopClock += 10;
   }
