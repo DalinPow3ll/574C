@@ -5,9 +5,10 @@
 #include "cube.h"
 #include "star.h"
 #include "sensor.h"
+#include "BootLoader.h"
 
 void autonomous() {
-
+  if(isOnline() == false && BootLoader == true){
 
   // autonmous selector
   // all programs are contained inside of the "programs.c" file
@@ -24,5 +25,5 @@ void autonomous() {
   }else{
     straight();
   }
-
+}
 }

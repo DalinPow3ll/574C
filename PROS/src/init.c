@@ -28,15 +28,6 @@ void initializeIO() {
 
 
 /*
-int Safeboot(int bootloader){
-	if(bootloader == 1){
-		Disable all Atoms
-		}
-	}
-*/
-
-
-/*
  * Runs user initialization code. This function will be started in its own task with the default
  * priority and stack size once when the robot is starting up. It is possible that the VEXnet
  * communication link may not be fully established at this time, so reading from the VEX
@@ -53,8 +44,12 @@ void initialize() {
 
   //encoder
   driveEnc = encoderInit(driveEncTop, driveEncBot, true);
-
+// -=+=-
+  bool BootLoader = true;
+// -=+=-
   //lcd using port uart1
   LCDInit();
+    #pragma GCC diagnostic ignored "-Wunused-variable"
+
   TaskHandle secondTaskHandle = taskRunLoop(LCDTasker, 500);
 }

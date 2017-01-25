@@ -1,5 +1,7 @@
 #include "API.h"
 #include "main.h"
+#include "BootLoader.h"
+#pragma GCC diagnostic ignored "-Wwrite-strings"
 
 int page = 1;
 int pressed = 0;
@@ -14,6 +16,23 @@ void LCDSlap(){
   lcdSetText(uart1, 1, "SLAP SLAP SLAP");
   lcdSetText(uart1, 2, "CLAP CLAP CLAP");
 }
+
+void LCDStart(){
+  char str[16];
+  lcdClear(uart1);
+  if(BootLoader == true){
+    sprintf(str, "%d", BootLoader);
+  }
+  else if(BootLoader == false);{
+
+  lcdSetText(uart1, 2, "False");
+
+  }
+
+  lcdSetText(uart1, 1, "Safeboot Status:");
+  lcdSetText(uart1, 2, str);
+}
+
 void LCDScreen(){
   lcdClear(uart1);
   lcdSetText(uart1, 1, "I am....");
@@ -66,16 +85,18 @@ void LCDTasker(){
     case 2:
       LCDPot();
       break;
-
-    case 3:
+    case 4:
+      LCDStart();
+      break;
+    case 5:
       LCDSlap();
       break;
 
-    case 4:
+    case 6:
       LCDZip();
       break;
 
-    case 5:
+    case 7:
       pageReset();
       break;
 
