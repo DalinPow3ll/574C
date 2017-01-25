@@ -45,7 +45,7 @@ void initialize() {
   //encoder
   driveEnc = encoderInit(driveEncTop, driveEncBot, true);
 // -=+=-
-  bool BootLoader = true;
+  //bool BootLoader = true;
 // -=+=-
   //lcd using port uart1
   LCDInit();
