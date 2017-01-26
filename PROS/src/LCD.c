@@ -1,5 +1,6 @@
 #include "API.h"
 #include "main.h"
+#pragma GCC diagnostic ignored "-Wwrite-strings"
 
 int page = 1;
 int pressed = 0;
@@ -14,6 +15,7 @@ void LCDSlap(){
   lcdSetText(uart1, 1, "SLAP SLAP SLAP");
   lcdSetText(uart1, 2, "CLAP CLAP CLAP");
 }
+
 void LCDScreen(){
   lcdClear(uart1);
   lcdSetText(uart1, 1, "I am....");

@@ -7,8 +7,6 @@
 #include "sensor.h"
 
 void autonomous() {
-
-
   // autonmous selector
   // all programs are contained inside of the "programs.c" file
   if (digitalRead(rightCubePin) == LOW){
@@ -24,5 +22,4 @@ void autonomous() {
   }else{
     straight();
   }
-
 }
