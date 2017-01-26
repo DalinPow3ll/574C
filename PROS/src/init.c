@@ -53,6 +53,7 @@ void initialize() {
 
   //encoder
   driveEnc = encoderInit(driveEncTop, driveEncBot, true);
+  driveEncL = encoderInit(driveEncTopL, driveEncBotL, true);
 
   //lcd using port uart1
   LCDInit();
