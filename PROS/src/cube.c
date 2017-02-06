@@ -70,6 +70,7 @@ void lCube(){
   motorSet(claw, 0);
   aDrive(4); // stop
   motorStopAll(); //pause
+  /*
   delay(500);
   aLift(80); //bring lift down
   delay(900);
@@ -79,4 +80,5 @@ void lCube(){
   aLift(0);//stop lift
   aDrive(4);//stop bot
   motorStopAll();//end routine
+  */
 }

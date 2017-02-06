@@ -12,22 +12,23 @@ void mDrive(){
   int joyT;
   int joyP;
 
-  float slew = 0.1; //slew constant
+  float slew = 0.5; //slew constant
+  float turnSlew = 1;
 
 
   joyT = -joystickGetAnalog(1, 1); // horizontal axis on left joystick
-  joyP = joystickGetAnalog(1, 2); // vertical axis on left joystick
+  joyP = -joystickGetAnalog(1, 2); // vertical axis on left joystick
 
   //deadzone
   if(abs(joyT) < 15){joyT = 0;}
   if(abs(joyP) < 15){joyP = 0;}
 
-  turn = turn + (joyT - turn) * slew;
+  turn = turn + (joyT - turn) * turnSlew;
   power = power + (joyP - power) * slew;
 
   //right wheels
   motorSet(drive3, turn + power);
-  motorSet(drive2, turn + power);
+  motorSet(drive2, turn - power);
 
   //left wheels
   motorSet(drive4, turn - power);

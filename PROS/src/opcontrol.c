@@ -9,9 +9,9 @@ void operatorControl() {
 	int cSet; // variable to set control mappings
 
 	if(digitalRead(controlPin) == HIGH){
-		cSet = 0; // 0 = nick's controls
+		cSet = 1; // 0 = nick's controls
 	}else{
-		cSet = 1; // 1 = micah's controls
+		cSet = 0; // 1 = micah's controls
 	}
 
 	//main loop

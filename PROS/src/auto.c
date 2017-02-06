@@ -5,12 +5,13 @@
 #include "cube.h"
 #include "star.h"
 #include "sensor.h"
+#include "skills.h"
 
 void autonomous() {
   // autonmous selector
   // all programs are contained inside of the "programs.c" file
   if (digitalRead(rightCubePin) == LOW){
-    rCube();
+    skills();
   }else if(digitalRead(leftCubePin) == LOW){
     lCube();
   }else if(digitalRead(rightStarPin) == LOW){

@@ -17,25 +17,25 @@ void aTank(int left, int right){
 }
 
 void aDrive (int direction) {
-if (direction == 0 || direction == 3) {
+if (direction == 1 || direction == 3) {
     motorSet(drive1, 127);
-    motorSet(drive4, 127);
+    motorSet(drive2, 127);
   }else if (direction == 4){
     motorSet(drive1, 0);
-    motorSet(drive4, 0);
+    motorSet(drive2, 0);
   }else{
     motorSet(drive1, -127);
-    motorSet(drive4, -127);
+    motorSet(drive2, -127);
   }
 
-  if (direction == 0 || direction == 2) {
-    motorSet(drive2, -127);
+  if (direction == 1 || direction == 2) {
+    motorSet(drive4, -127);
     motorSet(drive3, -127);
   }else if (direction == 4){
-    motorSet(drive2, 0);
+    motorSet(drive4, 0);
     motorSet(drive3, 0);
   }else{
-    motorSet(drive2, 127);
+    motorSet(drive4, 127);
     motorSet(drive3, 127);
   }
 }
