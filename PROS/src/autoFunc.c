@@ -8,12 +8,12 @@ void aLift(int direction){
   motorSet(lift4, direction); // set arm left 4
 }
 
-void aTank(int left, int right){
-  left = -left;
+void aTank(int right, int left){
+  right = -right;
   motorSet(drive1, left);
-  motorSet(drive4, left);
-  motorSet(drive2, right);
+  motorSet(drive2, left);
   motorSet(drive3, right);
+  motorSet(drive4, right);
 }
 
 void aDrive (int direction) {
@@ -29,8 +29,8 @@ if (direction == 1 || direction == 3) {
   }
 
   if (direction == 1 || direction == 2) {
-    motorSet(drive4, -127);
-    motorSet(drive3, -127);
+    motorSet(drive4, -80);
+    motorSet(drive3, -80);
   }else if (direction == 4){
     motorSet(drive4, 0);
     motorSet(drive3, 0);

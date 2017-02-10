@@ -1,4 +1,5 @@
 #include "main.h"
+#include "autoFunc.h"
 
 //program includes
 #include "straight.h"
@@ -10,17 +11,17 @@
 void autonomous() {
   // autonmous selector
   // all programs are contained inside of the "programs.c" file
-  if (digitalRead(rightCubePin) == LOW){
-    skills();
-  }else if(digitalRead(leftCubePin) == LOW){
+  if (digitalRead(12) == LOW){
+    rCube();
+  }else if(digitalRead(11) == LOW){
     lCube();
-  }else if(digitalRead(rightStarPin) == LOW){
+  }else if(digitalRead(10) == LOW){
     rStar();
-  }else if(digitalRead(leftStarPin) == LOW){
+  }else if(digitalRead(9) == LOW){
     lStar();
-  }else if(digitalRead(rSensorPin) == LOW){
-    rSensor();
+  }else if(digitalRead(8) == LOW){
+    skills();
   }else{
-    straight();
+    //dont run
   }
 }
