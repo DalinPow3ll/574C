@@ -28,11 +28,11 @@ void mDrive(){
 
   //right wheels
   motorSet(drive3, turn + power);
-  motorSet(drive2, turn - power);
+  motorSet(drive4, turn + power);
 
   //left wheels
-  motorSet(drive4, turn - power);
   motorSet(drive1, turn - power);
+  motorSet(drive2, turn - power);
 }
 
 void mClaw(){

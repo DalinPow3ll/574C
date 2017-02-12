@@ -130,10 +130,10 @@ void operatorControl();
 #define lift1 4
 #define lift2 5
 #define lift3 6
-#define lift4 7
+#define lift4 11
 #define claw 8
 #define drive3 9
-#define drive4 10
+#define drive4 7
 
 //analog ports
 #define armPot 1
@@ -142,9 +142,9 @@ void operatorControl();
 //digital ports
 #define driveEncTop 1
 #define driveEncBot 2
-#define driveEncTopL 3
-#define driveEncBotL 4
-#define controlPin 5
+#define driveEncTopL 14
+#define driveEncBotL 13
+#define controlPin 3
 #define rSensorPin 8
 #define leftStarPin 9
 #define rightStarPin 10

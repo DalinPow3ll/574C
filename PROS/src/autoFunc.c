@@ -35,7 +35,7 @@ if (direction == 1 || direction == 3) {
     motorSet(drive4, 0);
     motorSet(drive3, 0);
   }else{
-    motorSet(drive4, 127);
-    motorSet(drive3, 127);
+    motorSet(drive4, 80);
+    motorSet(drive3, 80);
   }
 }

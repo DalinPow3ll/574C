@@ -10,7 +10,6 @@
 
 void autonomous() {
   // autonmous selector
-  // all programs are contained inside of the "programs.c" file
   if (digitalRead(12) == LOW){
     rCube();
   }else if(digitalRead(11) == LOW){
@@ -21,6 +20,12 @@ void autonomous() {
     lStar();
   }else if(digitalRead(8) == LOW){
     skills();
+  }else if(digitalRead(7) == LOW){
+    rCubeLong();
+  }else if(digitalRead(6) == LOW){
+    lCubeLong();
+  }else if(digitalRead(5) == LOW){
+    straight();
   }else{
     //dont run
   }

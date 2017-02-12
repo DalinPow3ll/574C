@@ -1,4 +1,4 @@
-#include "sensFunc.h"
+#include "autoFunc.h"
 #include "main.h"
 
 int toDo;
@@ -7,106 +7,40 @@ int loopClock;
 
 void rStar(){
 
-  //claw out
-  loopClock = 0; encoderReset(driveEnc);
-  while(1){
-    toDo = 2;
-    toDo -= tipOut(loopClock);
-    toDo -= clawForward(cClose, 0);
-    if(toDo == 0){break;}delay(10);loopClock += 10;
-  }
+  //bring lift up and open claw
+  motorSet(1, 127); //start tip
+  aLift(-127); delay(900); aLift(10); //lift
+  motorStop(1); //stop tip
+  motorSet(claw, 127); delay(1400); motorStop(claw); //claw
+
+  //bring lift down
+  aLift(80); delay(1300); aLift(20);
 
 
-  //reverse
-  loopClock = 0; encoderReset(driveEnc);
-  while(1){
-    toDo = 1;
-    toDo -= tankDriveEnc(60, 10, -100);
-    if(toDo == 0){break;}delay(10);loopClock += 10;
-  }
+  //forward and grab
+
+  aDrive(1); delay(600); motorSet(claw, 15); delay(1150); aDrive(4); delay(200); // drive forward
+  motorSet(claw, 127); delay(500); motorSet(claw, 40);
+  aLift(-127); delay(600); aLift(0); // lift up
 
 
-  //forward
-  loopClock = 0; encoderReset(driveEnc);
-  while(1){
-    toDo = 1;
-    toDo -= tankDriveEnc(115, 127, 1200);
-    if(toDo == 0){break;}delay(10);loopClock += 10;
-  }
+  //reverse and throw
 
-  //grab and reverse
-  loopClock = 0; encoderReset(driveEnc);
-  while(1){
-    toDo = 3;
-    if(loopClock > 700){toDo -= tankDriveEnc(127, 60, -1200); toDo -= liftLoop(loopClock, 1200, -127, -35);}
-    toDo -= clawForward(cSqz, 40);
-    if(toDo == 0){break;}delay(10);loopClock += 10;
-  }
+  aDrive(0); delay(700); aTank(-127, 20);
+  delay(800);
+  aDrive(0);
+  delay(1000);
+  aLift(-127);
+  delay(1450);
+  motorSet(claw, -127);
+  delay(400);
+  motorStopAll();
 
-  //throw
-  loopClock = 0; encoderReset(driveEnc);
-  while(1){
-    toDo = 2;
-    toDo -= liftLoop(loopClock, 1500, -127, 0);
-    if(loopClock > 900){toDo -= clawBack(cClose);}
-    if(toDo == 0){break;}delay(10);loopClock += 10;
-  }
 
-  //reset and correct
-  loopClock = 0; encoderReset(driveEnc);
-  while(1){
-    toDo = 2;
-    toDo -= liftLoop(loopClock, 1400, 60, 0);
-    if(loopClock > 700){toDo -= tankDriveEnc(127, 95, 700);}
-    if(toDo == 0){break;}delay(10);loopClock += 10;
-  }
 }
 
 
 void lStar(){
 
-    //claw out
-    loopClock = 0; encoderReset(driveEncL);
-    while(1){
-      toDo = 2;
-      toDo -= tipOut(loopClock);
-      toDo -= clawForward(cClose, 0);
-      if(toDo == 0){break;}delay(10);loopClock += 10;
-    }
-
-
-    //reverse
-    loopClock = 0; encoderReset(driveEncL);
-    while(1){
-      toDo = 1;
-      toDo -= tankDriveEnc(10, 60, -100);
-      if(toDo == 0){break;}delay(10);loopClock += 10;
-    }
-
-
-    //forward
-    loopClock = 0; encoderReset(driveEncL);
-    while(1){
-      toDo = 1;
-      toDo -= tankDriveEnc(125, 127, 1200);
-      if(toDo == 0){break;}delay(10);loopClock += 10;
-    }
-
-    //grab and reverse
-    loopClock = 0; encoderReset(driveEncL);
-    while(1){
-      toDo = 3;
-      if(loopClock > 700){toDo -= tankDriveEnc(68, 127, -1250); toDo -= liftLoop(loopClock, 1200, -127, -35);}
-      toDo -= clawForward(cSqz, 40);
-      if(toDo == 0){break;}delay(10);loopClock += 10;
-    }
-
-    loopClock = 0; encoderReset(driveEncL);
-    while(1){
-      toDo = 2;
-      toDo -= liftLoop(loopClock, 1500, -127, 0);
-      if(loopClock > 900){toDo -= clawBack(cMid);}
-      if(toDo == 0){break;}delay(10);loopClock += 10;
-    }
 
 }

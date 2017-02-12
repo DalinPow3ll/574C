@@ -46,6 +46,7 @@ void LCDPot(){
   sprintf(str, "%d", power);
   lcdSetText(uart1, 1,"Potentiometer:");
   lcdSetText(uart1, 2, str);
+
 }
 
 void LCDTasker(){
