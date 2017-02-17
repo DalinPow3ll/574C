@@ -46,6 +46,7 @@ void operatorControl() {
 		  }
 
 			//printf("ticks: %d\n", encoderGet(driveEnc));
+			printf("Analog Readout, %d", analogRead(clawPot));
 
       delay(20);
     }

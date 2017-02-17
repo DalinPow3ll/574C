@@ -1,3 +1,4 @@
 void rSensor();
-int RIGHT;
-int LEFT;
+void grab(int left, int right, int pause);
+void reset();
+void launch();

@@ -19,7 +19,7 @@ void autonomous() {
   }else if(digitalRead(9) == LOW){
     lStar();
   }else if(digitalRead(8) == LOW){
-    skills();
+    rSensor();
   }else if(digitalRead(7) == LOW){
     rCubeLong();
   }else if(digitalRead(6) == LOW){
@@ -28,5 +28,6 @@ void autonomous() {
     straight();
   }else{
     //dont run
+    aTank(127,127);
   }
 }
