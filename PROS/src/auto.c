@@ -1,5 +1,6 @@
 #include "main.h"
 #include "autoFunc.h"
+#include "sensFunc.h"
 
 //program includes
 #include "straight.h"
@@ -27,7 +28,7 @@ void autonomous() {
   }else if(digitalRead(5) == LOW){
     straight();
   }else{
-    //dont run
-    aTank(127,127);
+    //test code
+    tankDriveEnc(60, 300);
   }
 }

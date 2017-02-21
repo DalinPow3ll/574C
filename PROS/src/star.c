@@ -26,7 +26,7 @@ void rStar(){
 
   //reverse and throw
 
-  aDrive(0); delay(700); aTank(-127, 20);
+  aDrive(0); delay(900); aTank(-127, 20);
   delay(800);
   aDrive(0);
   delay(1400);

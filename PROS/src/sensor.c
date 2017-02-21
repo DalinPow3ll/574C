@@ -23,7 +23,7 @@ void grab(int left, int right, int pause){
   aTank(left, right); //forward
   delay(pause);
   motorSet(claw, 127);
-  delay(400);
+  delay(600);
   aDrive(4);
   motorSet(claw, 40);
 }
@@ -35,6 +35,13 @@ void rSensor(){
 
   //first preload
   reset();
-  grab(127, 127, 1400); // drive left and right motors at full power for 1100 miliseconds
+  grab(127, 127, 1400); // drive left and right motors at full power for 1400 miliseconds
   launch();
+
+  //second preload
+  delay(400);
+  reset();
+  grab(127, 127, 1400); // drive left and right motors at full power for 1400 miliseconds
+  launch();
+
 }
