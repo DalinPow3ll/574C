@@ -36,9 +36,8 @@ void mDrive(){
 }
 
 void mClaw(){
-  printf("Current Pot reading: %d\n", analogRead(clawPot) );
   // claw code
-  if(joystickGetDigital(1, 6, JOY_UP)){
+  if(joystickGetDigital(1, 6, JOY_UP) && analogRead(clawPot) > 1400){
     motorSet(claw, 127); //set motor full turn
   }else if(joystickGetDigital(1, 6, JOY_DOWN)) {
     motorSet(claw, -127); // set motor

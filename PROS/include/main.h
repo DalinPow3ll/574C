@@ -144,7 +144,7 @@ void operatorControl();
 #define driveEncBot 2
 #define driveEncTopL 14
 #define driveEncBotL 13
-#define controlPin 3
+#define controlPin 5
 #define rSensorPin 8
 #define leftStarPin 9
 #define rightStarPin 10
@@ -152,7 +152,7 @@ void operatorControl();
 #define rightCubePin 12
 
 //claw position
-#define cMid 2350
+#define cMid 1800
 #define cClose 1560
 #define cSqz 800
 

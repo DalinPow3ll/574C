@@ -28,7 +28,6 @@ void autonomous() {
   }else if(digitalRead(5) == LOW){
     straight();
   }else{
-    //test code
-    tankDriveEnc(60, 300);
+    
   }
 }

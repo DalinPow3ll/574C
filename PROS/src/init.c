@@ -21,9 +21,6 @@
  * configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
  */
 void initializeIO() {
-  pinMode(controlPin, INPUT);
-  pinMode(rightCubePin, INPUT);
-  pinMode(leftCubePin, INPUT);
 }
 
 
@@ -43,7 +40,7 @@ void initializeIO() {
 void initialize() {
 
   //encoder
-  driveEnc = encoderInit(driveEncTop, driveEncBot, true);
+  driveEnc = encoderInit(driveEncTop, driveEncBot, false);
   driveEncL = encoderInit(driveEncTopL, driveEncBotL, true);
 
   //lcd using port uart1
