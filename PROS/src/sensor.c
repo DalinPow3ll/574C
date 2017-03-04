@@ -15,9 +15,10 @@ void launch(int pause){
 }
 
 void reset(){
-  aLift(80);
-  delay(1300);
-  aLift(10); //hold lift down
+  while(analogRead(armPot) > 10){
+    aLift(127);
+  }
+  aLift(25);
   clawBack();
 }
 

@@ -137,7 +137,7 @@ void operatorControl();
 
 //analog ports
 #define armPot 1
-#define clawPot 2
+#define clawPot 3
 
 //digital ports
 #define driveEncTop 1
@@ -152,9 +152,8 @@ void operatorControl();
 #define rightCubePin 12
 
 //claw position
-#define cMid 1800
-#define cClose 1560
-#define cSqz 800
+#define cMid 2400
+#define cClose 2950
 
 //encoder
 Encoder driveEnc;

@@ -32,12 +32,12 @@ void mDrive(){
 
   //left wheels
   motorSet(drive1, turn - power);
-  motorSet(drive2, turn - power);
+    motorSet(drive2, turn - power);
 }
 
 void mClaw(){
   // claw code
-  if(joystickGetDigital(1, 6, JOY_UP) && analogRead(clawPot) > 1400){
+  if(joystickGetDigital(1, 6, JOY_UP) && analogRead(clawPot) < cClose){
     motorSet(claw, 127); //set motor full turn
   }else if(joystickGetDigital(1, 6, JOY_DOWN)) {
     motorSet(claw, -127); // set motor

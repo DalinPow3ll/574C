@@ -6,7 +6,7 @@ void clawBack(){
 
   while(complete == 0){
     //claw logic
-    if(analogRead(clawPot) < cMid){ //if claw not at open position
+    if(analogRead(clawPot) > cMid){ //if claw not at open position
       motorSet(claw, -127); //move it back
     }else{
       motorSet(claw, 0); //stop claw

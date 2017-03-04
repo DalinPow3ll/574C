@@ -23,7 +23,7 @@ void operatorControl() {
 			autoButton(); // autonomous activator button
 
 			//printf("ticks: %d\n", encoderGet(driveEnc));
-			printf("Readout, %d\n", analogRead(armPot));
+			printf("Readout, %d\n", analogRead(clawPot));
 
       delay(20);
     }
