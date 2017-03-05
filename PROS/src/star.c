@@ -11,7 +11,10 @@ void rStar(){
   motorSet(1, 127); //start tip
   aLift(-127); delay(900); aLift(10); //lift
   motorStop(1); //stop tip
-  motorSet(claw, 127); delay(1460); motorStop(claw); //claw
+  while(analogRead(clawPot) < cMid-400){
+    motorSet(claw, 127);
+  }
+  motorStop(claw); //claw
 
   //bring lift down
   aLift(80); delay(1400); aLift(20);

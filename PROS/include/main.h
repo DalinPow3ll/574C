@@ -142,8 +142,7 @@ void operatorControl();
 //digital ports
 #define driveEncTop 1
 #define driveEncBot 2
-#define driveEncTopL 14
-#define driveEncBotL 13
+#define armLimit 3
 #define controlPin 5
 #define rSensorPin 8
 #define leftStarPin 9
@@ -152,11 +151,10 @@ void operatorControl();
 #define rightCubePin 12
 
 //claw position
-#define cMid 2400
+#define cMid 2300
 #define cClose 2950
 
 //encoder
 Encoder driveEnc;
-Encoder driveEncL;
 
 #endif

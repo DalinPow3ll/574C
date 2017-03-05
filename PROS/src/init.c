@@ -21,6 +21,7 @@
  * configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
  */
 void initializeIO() {
+  pinMode(3, INPUT);
 }
 
 
@@ -41,11 +42,10 @@ void initialize() {
 
   //encoder
   driveEnc = encoderInit(driveEncTop, driveEncBot, false);
-  driveEncL = encoderInit(driveEncTopL, driveEncBotL, true);
 
   //lcd using port uart1
   LCDInit();
-    #pragma GCC diagnostic ignored "-Wunused-variable"
 
+  #pragma GCC diagnostic ignored "-Wunused-variable"
   TaskHandle secondTaskHandle = taskRunLoop(LCDTasker, 500);
 }

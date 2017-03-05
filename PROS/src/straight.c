@@ -25,5 +25,4 @@ void straight(){
   motorSet(claw, -127);
   delay(600);
   motorStopAll();
-
 }

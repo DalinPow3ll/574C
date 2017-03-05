@@ -15,7 +15,7 @@ void launch(int pause){
 }
 
 void reset(){
-  while(analogRead(armPot) > 10){
+  while(digitalRead(armLimit) == HIGH){
     aLift(127);
   }
   aLift(25);
@@ -54,7 +54,7 @@ void skills(){
   delay(400);
   reset();
   aTank(-60, 60);
-  delay(170);
+  delay(90);
   grab(127, 110, 1000); //slant
   aTank(-50,-127);
   delay(300);
@@ -76,7 +76,7 @@ void skills(){
   delay(500);
   aLift(0);
   aDrive(3);
-  delay(500);
+  delay(350);
   aDrive(0);
   delay(900);
   aLift(-127);
@@ -137,10 +137,14 @@ void skills(){
 
   //rear cube
   reset();
-  tankDriveEnc(60, -180);
-  delay(200);
+  tankDriveEnc(60, -170);
+  motorSet(claw, -127);
+  delay(400);
   grab(127, 127, 1500);
   delay(200);
+  motorSet(claw, 127);
+  delay(400);
+  motorSet(claw, 40);
   aLift(-127);
   delay(400);
   aLift(-20);
@@ -151,7 +155,6 @@ void skills(){
   //final star
   reset();
   delay(400);
-  reset();
   grab(127, 65, 1200); //slant
   launch(1400);
 
